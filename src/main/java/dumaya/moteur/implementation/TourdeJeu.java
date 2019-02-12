@@ -42,19 +42,23 @@ public abstract class TourdeJeu implements ITourdeJeu {
             String precedenteTentative = essais.get(essais.size() - 1).toString();
             char[] tabPrecedenteTentative = precedenteTentative.toCharArray();
             char[] tabProchaineTentative = new char[tabResultPrecedent.length];
+
             for (int i = 0; i < tabResultPrecedent.length; i++) {
                 if (tabResultPrecedent[i] == '+') {
                     int a = Character.getNumericValue(tabPrecedenteTentative[i]);
-                    int b = ((9 - a) / 2) + a + 1;
-                    tabProchaineTentative[i] = Character.highSurrogate((b));
+                    int b = a+1;
+                    tabProchaineTentative[i] = (char) (b+'0');
                 }
                 if (tabResultPrecedent[i] == '-') {
                     int a = Character.getNumericValue(tabPrecedenteTentative[i]);
-                    int b = (a / 2);
-                    tabProchaineTentative[i] = Character.highSurrogate((b));
+                    int b = a-1;
+                    tabProchaineTentative[i] = (char) (b+'0');
+                }
+                if (tabResultPrecedent[i] == '=') {
+                    tabProchaineTentative[i] = tabPrecedenteTentative[i];
                 }
             }
-            essais.add(tabProchaineTentative.toString());
+            essais.add(new String(tabProchaineTentative));
         }
         System.out.println("L'ordi a choisi " + essais.get(essais.size() - 1).toString());
     }

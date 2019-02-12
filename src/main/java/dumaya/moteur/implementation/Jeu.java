@@ -73,7 +73,6 @@ public abstract class  Jeu  implements IJeu {
                 ArrayList essaisPlusTentative = tourdeJeuR.saisirCombinaison(typeJoueur, resultatComparaison, essais);
                 if (tourdeJeuR.comparaisonCombinaison(essaisPlusTentative.get(essaisPlusTentative.size()-1).toString(), secret).equals("====")) {
                     gagne = true;
-
                 } else {
                     resultatComparaison=tourdeJeuR.comparaisonCombinaison(essaisPlusTentative.get(essaisPlusTentative.size()-1).toString(),secret);
                     tourdeJeuR.afficherResultat(tourdeJeuR.preparationResultat(resultatComparaison));
