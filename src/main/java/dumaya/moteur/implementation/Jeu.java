@@ -3,6 +3,7 @@ package dumaya.moteur.implementation;
 import dumaya.moteur.interf.IJeu;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public abstract class  Jeu  implements IJeu {
     private boolean modeDev;
@@ -28,7 +29,9 @@ public abstract class  Jeu  implements IJeu {
         if (typeJoueur.equals("J")){
             combiSecrete = "1111";
         } else {
-            combiSecrete = "5622";
+            System.out.println("Choisissez le code secret que l'ordi va devoir trouver");
+            Scanner sc = new Scanner(System.in);
+            combiSecrete = sc.next();
         }
         return combiSecrete;
     }
@@ -38,7 +41,6 @@ public abstract class  Jeu  implements IJeu {
         if (modeDev) {
             System.out.println("Le secret est :"+secret);
         }
-
     }
 
     @Override
