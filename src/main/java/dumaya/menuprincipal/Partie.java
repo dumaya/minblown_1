@@ -1,10 +1,10 @@
 package dumaya.menuprincipal;
 
+import com.sun.xml.internal.bind.v2.TODO;
 import dumaya.moteur.implementation.Jeu;
 import dumaya.moteur.implementation.JeuChallenger;
 import dumaya.moteur.implementation.JeuDefenseur;
 import dumaya.moteur.implementation.JeuDuel;
-import dumaya.moteur.interf.IJeu;
 
 import java.util.Scanner;
 
@@ -17,7 +17,7 @@ public class Partie {
     private int nbdeCouleur;
     private int nbessaiPossible;
     private int longueurduSecret;
-
+    //TODO plein de get et de set ?! j'en fait quoi
     public String getChoixJeu() {
         return choixJeu;
     }
@@ -56,12 +56,14 @@ public class Partie {
         choixModeJeu = sc.next();
         System.out.println("C'est parti pour : Jeu : " + choixJeu + " Mode : " + choixModeJeu);
     }
-
+    //TODO utiliser une log
     public void initLog() {
         modeDev = true;
     }
 
+//TODO ajouter exploitation du fichier de config
     public void chercherConfig() {
+
         nbdeCouleur=4;
         nbessaiPossible=20;
         longueurduSecret=4;

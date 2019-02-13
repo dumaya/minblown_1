@@ -16,7 +16,7 @@ public class MTourdeJeu implements ITourdeJeu {
     }
 
     @Override
-    public String afficherResultat(String texte) {
+    public String afficherResultat(String texte, String typeJoueur) {
 
         return texte;
     }

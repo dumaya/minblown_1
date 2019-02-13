@@ -8,7 +8,7 @@ public interface ITourdeJeu {
 
     String comparaisonCombinaison(String tentative, String secret);
 
-    String afficherResultat(String texte);
+    String afficherResultat(String texte, String typeJoueur);
 
     String preparationResultat(String resultat);
 }

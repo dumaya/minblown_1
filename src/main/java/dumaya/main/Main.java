@@ -8,6 +8,7 @@ import dumaya.menuprincipal.Partie;
  */
 public class Main
 {
+    //TODO ajout d'un paramétre d'appel
     public static <partie> void main(String[] args )
     {
         System.out.println("Bienvenue dans Mindblown");

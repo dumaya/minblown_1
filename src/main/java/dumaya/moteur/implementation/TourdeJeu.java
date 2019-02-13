@@ -3,7 +3,6 @@ package dumaya.moteur.implementation;
 import dumaya.moteur.interf.ITourdeJeu;
 
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -95,8 +94,12 @@ public abstract class TourdeJeu implements ITourdeJeu {
      * Afficher le résultat
      */
     @Override
-    public String afficherResultat(String texte) {
-        System.out.println(texte);
+    public String afficherResultat(String texte, String typeJoueur) {
+        if (typeJoueur=="O") {
+            System.out.println(texte +" Ordinateur");
+        } else {
+            System.out.println(texte +" Joueur");
+        }
         return texte;
     }
 
