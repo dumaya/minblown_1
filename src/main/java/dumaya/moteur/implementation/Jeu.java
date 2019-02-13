@@ -29,11 +29,12 @@ public abstract class  Jeu  implements IJeu {
     /**
      * @param typeJoueur Si joueur, combi random, si ordi, le joueur choisi
      * @param longueurduSecret
+     * @param nbdeCouleur
      * @return la combinaison archi secrete
      */
     //TODO randomize + nb de characteres variable + ctrl saisie
     @Override
-    public String definirCombinaisonSecrete(String typeJoueur, int longueurduSecret) {
+    public String definirCombinaisonSecrete(String typeJoueur, int longueurduSecret, int nbdeCouleur) {
         String combiSecrete ="0000";
         if (typeJoueur.equals("J")){
             combiSecrete = "1111";

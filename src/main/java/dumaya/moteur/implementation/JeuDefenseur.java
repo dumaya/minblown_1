@@ -12,7 +12,7 @@ public class JeuDefenseur extends Jeu {
     @Override
     public boolean unJeu() {
         boolean resultJeu = false;
-        String secret = definirCombinaisonSecrete("O", longueurduSecret);
+        String secret = definirCombinaisonSecrete("O", longueurduSecret, 4);
         afficherSecret(secret, "O");
         resultJeu = derouleJeu(secret, choixJeu, longueurduSecret, nbdeCouleur, nbessaiPossible,"O", "");
         findeJeu("O", resultJeu);

@@ -11,7 +11,7 @@ public class JeuChallenger extends Jeu {
     @Override
     public boolean unJeu() {
         boolean resultJeu = false;
-        String secret = definirCombinaisonSecrete("J", longueurduSecret);
+        String secret = definirCombinaisonSecrete("J", longueurduSecret, 4);
         afficherSecret(secret, "J");
         resultJeu = derouleJeu(secret, choixJeu, longueurduSecret, nbdeCouleur, nbessaiPossible,"J", "");
         findeJeu("J", resultJeu);

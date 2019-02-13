@@ -1,11 +1,14 @@
 package dumaya.menuprincipal;
 
-import com.sun.xml.internal.bind.v2.TODO;
 import dumaya.moteur.implementation.Jeu;
 import dumaya.moteur.implementation.JeuChallenger;
 import dumaya.moteur.implementation.JeuDefenseur;
 import dumaya.moteur.implementation.JeuDuel;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 import java.util.Scanner;
 
 /**
@@ -58,33 +61,77 @@ public class Partie {
     }
     //TODO utiliser une log
     public void initLog() {
-        modeDev = true;
+
+
     }
 
-//TODO ajouter exploitation du fichier de config
     public void chercherConfig() {
+        Properties prop = new Properties();
+        ClassLoader classLoader = getClass().getClassLoader();
+        InputStream input = null;
 
-        nbdeCouleur=4;
-        nbessaiPossible=20;
-        longueurduSecret=4;
+        try {
+
+            input = classLoader.getResourceAsStream("config.properties");
+
+            // load a properties file
+            prop.load(input);
+
+            // get the property value and print it out
+            setNbdeCouleur(Integer.valueOf(prop.getProperty("nbdeCouleur")));
+            setLongueurduSecret(Integer.valueOf(prop.getProperty("longueurduSecret")));
+            setNbessaiPossible(Integer.valueOf(prop.getProperty("nbessaiPossible")));
+            if (Integer.valueOf(prop.getProperty("modeDev")) == 1) {
+                setModeDev(true);
+            } else {
+                setModeDev(false);
+            }
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (input != null) {
+                try {
+                    input.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
-    public void lancerJeu() {
+    public void lancerJeu () {
         switch (choixModeJeu) {
             case "C":
-                Jeu jeuJoueC = new JeuChallenger(modeDev,choixJeu,choixModeJeu,nbdeCouleur,nbessaiPossible,longueurduSecret);
+                Jeu jeuJoueC = new JeuChallenger(modeDev, choixJeu, choixModeJeu, nbdeCouleur, nbessaiPossible, longueurduSecret);
                 jeuJoueC.unJeu();
                 break;
             case "U":
-                Jeu jeuJoueU = new JeuDuel(modeDev,choixJeu,choixModeJeu,nbdeCouleur,nbessaiPossible,longueurduSecret);
+                Jeu jeuJoueU = new JeuDuel(modeDev, choixJeu, choixModeJeu, nbdeCouleur, nbessaiPossible, longueurduSecret);
                 jeuJoueU.unJeu();
                 break;
             case "D":
-                Jeu jeuJoueD = new JeuDefenseur(modeDev,choixJeu,choixModeJeu,nbdeCouleur,nbessaiPossible,longueurduSecret);
+                Jeu jeuJoueD = new JeuDefenseur(modeDev, choixJeu, choixModeJeu, nbdeCouleur, nbessaiPossible, longueurduSecret);
                 jeuJoueD.unJeu();
                 break;
             default:
                 break;
         }
+    }
+
+    public void setNbdeCouleur ( int nbdeCouleur){
+        this.nbdeCouleur = nbdeCouleur;
+    }
+
+    public void setLongueurduSecret ( int longueurduSecret){
+        this.longueurduSecret = longueurduSecret;
+    }
+
+    public void setNbessaiPossible ( int nbessaiPossible){
+        this.nbessaiPossible = nbessaiPossible;
+    }
+
+    public void setModeDev ( boolean modeDev){
+        this.modeDev = modeDev;
     }
 }
