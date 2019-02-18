@@ -8,6 +8,8 @@ public interface ITourdeJeu {
 
     ArrayList saisirCombinaison(String typeJoueur, ArrayList essais, ArrayList resultatsPrecedents);
 
+    void saisirCombinaisonJoueur(ArrayList essais);
+
     String afficherResultat(String texte, String typeJoueur);
 
     String preparationResultat(String resultat);

@@ -9,13 +9,7 @@ public class TourdeMastermind extends TourdeJeu {
         super(longueurduSecret,nbdeCouleur);
     }
 
-    @Override
-    protected void saisirCombinaisonJoueur(ArrayList essais) {
-        System.out.println("Saisie combinaison de " + longueurduSecret + " chiffres allant de 0 à " + (nbdeCouleur -1));
-        Scanner sc = new Scanner(System.in);
-        String nouvelEssai = sc.next();
-        essais.add(nouvelEssai);
-    }
+
     /**
      * Comparaison des combinaisons, à chaque caractére de la tentative, on compare avec le secret. Si c'est =, on alimente le tableau de retour avec R (rouge)
      * Ensuite on vérifie pour chaque caractére de la tentative si cela correspond à 1 des autres caractéres du secret, dans ce cas on alimente le tableau avec B (blanc) pour mal placé

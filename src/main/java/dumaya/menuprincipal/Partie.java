@@ -15,6 +15,11 @@ import java.util.Scanner;
  */
 public class Partie {
     private String choixModeJeu;
+
+    public void setChoixJeu(String choixJeu) {
+        this.choixJeu = choixJeu;
+    }
+
     private boolean modeDev;
     private int nbdeCouleur;
     private int nbessaiPossible;
@@ -51,10 +56,10 @@ public class Partie {
     }
 
     public void choixduJeu() {
-        System.out.println("Choisissez le jeu auquel vous voulez jouer : \n-R pour Rechercher +/-\n- M pour Mastermind");
+        System.out.println("Choisissez le jeu auquel vous voulez jouer : \n- R pour Rechercher +/-\n- M pour Mastermind");
         Scanner sc = new Scanner(System.in);
         choixJeu = sc.next();
-        System.out.println("Choisissez le mode de jeu auquel vous voulez jouer :\n -C pour Challenger,\n- U pour Duel\n-D pour Defense");
+        System.out.println("Choisissez le mode de jeu auquel vous voulez jouer :\n- C pour Challenger,\n- U pour Duel\n- D pour Defense");
         choixModeJeu = sc.next();
         System.out.println("C'est parti pour : Jeu : " + choixJeu + " Mode : " + choixModeJeu);
     }

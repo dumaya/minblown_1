@@ -36,13 +36,7 @@ public class TourdeRecherchePlusMoins extends TourdeJeu {
         String texte = (resultat + " <------ Ce n'est pas exact, try again");
         return texte;
     }
-    @Override
-    protected void saisirCombinaisonJoueur(ArrayList essais) {
-        System.out.println("Saisie combinaison de " + longueurduSecret + " chiffres");
-        Scanner sc = new Scanner(System.in);
-        String nouvelEssai = sc.next();
-        essais.add(nouvelEssai);
-    }
+
     @Override
     protected void saisirCombinaisonOrdi(ArrayList essais, ArrayList resultatPrecedents){
         if (essais.size()==0){

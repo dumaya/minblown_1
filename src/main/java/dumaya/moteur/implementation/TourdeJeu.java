@@ -33,22 +33,29 @@ public abstract class TourdeJeu implements ITourdeJeu {
         }
     }
 
+    @Override
+    public void saisirCombinaisonJoueur(ArrayList essais) {
+        System.out.println("Saisie combinaison de " + longueurduSecret + " chiffres allant de 0 à " + (nbdeCouleur -1));
+        Scanner sc = new Scanner(System.in);
+        String nouvelEssai = sc.next();
+        essais.add(nouvelEssai);
+    }
+
     /**
      * Afficher le résultat
      */
     @Override
     public String afficherResultat(String texte, String typeJoueur) {
         if (typeJoueur=="O") {
-            System.out.println(texte +" Ordinateur");
+            System.out.println(" Ordinateur - " + texte);
         } else {
-            System.out.println(texte +" Joueur");
+            System.out.println(" Joueur - " +texte);
         }
         return texte;
     }
 
     protected abstract void saisirCombinaisonOrdi(ArrayList essais, ArrayList resultatPrecedents);
 
-    protected abstract void saisirCombinaisonJoueur(ArrayList essais);
 }
 
 
