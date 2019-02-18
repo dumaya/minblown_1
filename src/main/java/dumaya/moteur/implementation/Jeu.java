@@ -3,7 +3,6 @@ package dumaya.moteur.implementation;
 import dumaya.moteur.interf.IJeu;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -98,29 +97,33 @@ public abstract class  Jeu  implements IJeu {
         boolean gagne=false;
         int nbtour=0;
         ArrayList essais = new ArrayList();
+        ArrayList resultatsPrecedents = new ArrayList();
+
         String resultatComparaison="";
         do {
             if (choixJeu.equals("R")) {
 
                 TourdeRecherchePlusMoins tourdeJeuR = new TourdeRecherchePlusMoins(longueurduSecret,nbdeCouleur);
-                ArrayList essaisPlusTentative = tourdeJeuR.saisirCombinaison(typeJoueur, resultatComparaison, essais);
+                ArrayList essaisPlusTentative = tourdeJeuR.saisirCombinaison(typeJoueur, essais, resultatsPrecedents);
                 if (tourdeJeuR.comparaisonCombinaison(essaisPlusTentative.get(essaisPlusTentative.size()-1).toString(), secretJoueur).equals("====")) {
                     gagne = true;
                 } else {
                     resultatComparaison=tourdeJeuR.comparaisonCombinaison(essaisPlusTentative.get(essaisPlusTentative.size()-1).toString(), secretJoueur);
                     tourdeJeuR.afficherResultat(tourdeJeuR.preparationResultat(resultatComparaison), typeJoueur);
                     essais=essaisPlusTentative;
+                    resultatsPrecedents.add(resultatComparaison);
                 }
 
             } else {
                 TourdeMastermind tourdeJeuM = new TourdeMastermind(longueurduSecret,nbdeCouleur);
-                ArrayList essaisPlusTentative = tourdeJeuM.saisirCombinaison(typeJoueur, resultatComparaison, essais);
-                if (tourdeJeuM.comparaisonCombinaison(essaisPlusTentative.get(essaisPlusTentative.size()-1).toString(), secretJoueur).equals("====")) {
+                ArrayList essaisPlusTentative = tourdeJeuM.saisirCombinaison(typeJoueur, essais,resultatsPrecedents);
+                if (tourdeJeuM.comparaisonCombinaison(essaisPlusTentative.get(essaisPlusTentative.size()-1).toString(), secretJoueur).equals("RRRR")) {
                     gagne = true;
                 } else {
                     resultatComparaison=tourdeJeuM.comparaisonCombinaison(essaisPlusTentative.get(essaisPlusTentative.size()-1).toString(), secretJoueur);
                     tourdeJeuM.afficherResultat(tourdeJeuM.preparationResultat(resultatComparaison), typeJoueur);
                     essais=essaisPlusTentative;
+                    resultatsPrecedents.add(resultatComparaison);
                 }
             }
             nbtour++;

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public interface ITourdeJeu {
 
-    ArrayList saisirCombinaison(String typeJoueur, String resultPrecedent, ArrayList essais);
-
     String comparaisonCombinaison(String tentative, String secret);
+
+    ArrayList saisirCombinaison(String typeJoueur, ArrayList essais, ArrayList resultatsPrecedents);
 
     String afficherResultat(String texte, String typeJoueur);
 

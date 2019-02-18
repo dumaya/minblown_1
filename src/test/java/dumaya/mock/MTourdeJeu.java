@@ -5,14 +5,15 @@ import dumaya.moteur.interf.ITourdeJeu;
 import java.util.ArrayList;
 
 public class MTourdeJeu implements ITourdeJeu {
-    @Override
-    public ArrayList saisirCombinaison(String typeJoueur, String resultPrecedent, ArrayList essais) {
-        return null;
-    }
 
     @Override
     public String comparaisonCombinaison(String tentative, String secret){
         return "====";
+    }
+
+    @Override
+    public ArrayList saisirCombinaison(String typeJoueur, ArrayList essais, ArrayList resultatsPrecedents) {
+        return null;
     }
 
     @Override

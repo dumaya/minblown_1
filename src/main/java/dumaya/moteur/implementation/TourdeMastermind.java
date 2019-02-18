@@ -58,4 +58,53 @@ public class TourdeMastermind extends TourdeJeu {
         String texte=("Vous avez " + R + " pions bien placés et " + B + " pions mal placés mais de la bonne couleur et donc " + Wrong + " pions complétement faux.");
         return texte;
     }
+    @Override
+    protected void saisirCombinaisonOrdi(ArrayList essais, ArrayList resultatsPrecedents){
+        if (essais.size()==0) {
+            char[] tentative = new char[longueurduSecret];
+            for (int j = 0; j < longueurduSecret; j++) {
+                tentative[j] = (char) (0+'0');
+            }
+            essais.add(new String(tentative));
+        } else {
+            // Compter le nb de R
+            int nbR = 0;
+            for (int i = 0; i < resultatsPrecedents.size(); i++) {
+                String precedentResultat = resultatsPrecedents.get(i).toString();
+                char[] tabPrecedentResultat = precedentResultat.toCharArray();
+
+                for (int j = 0; j < longueurduSecret; j++) {
+                    if (tabPrecedentResultat[j] == 'R')
+                        nbR++;
+                }
+
+            }
+            //tant que nbR n'est pas égal à la longueur du secret, on teste 0000 puis 1111 ...
+            char[] tentative = new char[longueurduSecret];
+            String essaiPrecedent = essais.get(essais.size() - 1).toString();
+            char[] tabEssaiPrecedent = essaiPrecedent.toCharArray();
+            int n = tabEssaiPrecedent[1];
+            if (nbR != longueurduSecret) {
+                for (int j = 0; j < longueurduSecret; j++) {
+                    tentative[j] = (char) (n + 1);
+                }
+            } else {
+                // ensuite, on peut trouver le bon code
+                for (int i = 0; i < essais.size(); i++) {
+                    String unEssai = essais.get(i).toString();
+                    char[] tabEssai= unEssai.toCharArray();
+                    String unResultat = resultatsPrecedents.get(i).toString();
+                    char[] tabResultat= unResultat.toCharArray();
+
+                    for (int j = 0; j < longueurduSecret; j++) {
+                        if (tabResultat[j] == 'R')
+                            tentative[j] = tabEssai[i];
+                    }
+
+                }
+            }
+            essais.add(new String(tentative));
+        }
+        System.out.println("L'ordi a choisi " + essais.get(essais.size() - 1).toString());
+    }
 }
