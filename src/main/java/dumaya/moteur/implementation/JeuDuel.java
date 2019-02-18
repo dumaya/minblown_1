@@ -76,8 +76,27 @@ public class JeuDuel extends Jeu {
                 }
 
             } else {
-                TourdeMastermind tourdeJeuM = new TourdeMastermind(longueurduSecret,nbdeCouleur);
-                //tourdeJeuM.saisirCombinaison();
+                TourdeMastermind tourdeJeuMOrdi = new TourdeMastermind(longueurduSecret,nbdeCouleur);
+                TourdeMastermind tourdeJeuMJoueur = new TourdeMastermind(longueurduSecret,nbdeCouleur);
+
+                ArrayList essaisPlusTentativeOrdi = tourdeJeuMOrdi.saisirCombinaison("O", essaisOrdi, resultatComparaisonOrdi);
+                ArrayList essaisPlusTentativeJoueur = tourdeJeuMJoueur.saisirCombinaison("J", essaisJoueur, resultatComparaisonJoueur);
+
+                if (tourdeJeuMOrdi.comparaisonCombinaison(essaisPlusTentativeOrdi.get(essaisPlusTentativeOrdi.size()-1).toString(), secretJoueur).equals("RRRR")) {
+                    gagneOrdi = true;
+                } else {
+                    resultatComparaisonOrdi.add(tourdeJeuMOrdi.comparaisonCombinaison(essaisPlusTentativeOrdi.get(essaisPlusTentativeOrdi.size()-1).toString(),secretJoueur));
+                    tourdeJeuMOrdi.afficherResultat(tourdeJeuMOrdi.preparationResultat(resultatComparaisonOrdi.get(resultatComparaisonOrdi.size()-1).toString()),"O");
+                    essaisOrdi=essaisPlusTentativeOrdi;
+                }
+                if (tourdeJeuMJoueur.comparaisonCombinaison(essaisPlusTentativeJoueur.get(essaisPlusTentativeJoueur.size()-1).toString(), secretOrdi).equals("RRRR")) {
+                    gagneJoueur = true;
+                } else {
+                    resultatComparaisonJoueur.add(tourdeJeuMJoueur.comparaisonCombinaison(essaisPlusTentativeJoueur.get(essaisPlusTentativeJoueur.size()-1).toString(),secretOrdi));
+                    tourdeJeuMJoueur.afficherResultat(tourdeJeuMJoueur.preparationResultat(resultatComparaisonJoueur.get(resultatComparaisonJoueur.size()-1).toString()),"J");
+                    essaisJoueur=essaisPlusTentativeJoueur;
+                }
+
             }
             nbtour++;
         } while ((nbtour <= nbessaiPossible) && !(gagneOrdi || gagneJoueur));
