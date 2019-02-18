@@ -12,8 +12,8 @@ import java.util.Scanner;
 public abstract class TourdeJeu implements ITourdeJeu {
 
 
-    private int longueurduSecret;
-    private int nbdeCouleur;
+    protected int longueurduSecret;
+    protected int nbdeCouleur;
 
     public TourdeJeu(int longueurduSecret, int nbdeCouleur){
         this.longueurduSecret=longueurduSecret;
@@ -62,34 +62,8 @@ public abstract class TourdeJeu implements ITourdeJeu {
         System.out.println("L'ordi a choisi " + essais.get(essais.size() - 1).toString());
     }
 
-    private void saisirCombinaisonJoueur(ArrayList essais) {
-        System.out.println("Saisie combinaison de " + longueurduSecret + " chiffres");
-        Scanner sc = new Scanner(System.in);
-        String nouvelEssai = sc.next();
-        essais.add(nouvelEssai);
-    }
 
-    /**
-     * Comparaison des combinaisons
-     */
-    @Override
-    public String comparaisonCombinaison(String tentative, String secret) {
-        char[] tabTentative=tentative.toCharArray();
-        char[] tabsecret=secret.toCharArray();
-        char[] tabcompare= new char[tabsecret.length];
-        for (int i=0;i<tabsecret.length;i++) {
-            if (tabsecret[i]<tabTentative[i]) {
-                tabcompare[i]='-';
-            } else {
-                if (tabsecret[i]>tabTentative[i]) {
-                    tabcompare[i] = '+';
-                } else {
-                    tabcompare[i] = '=';
-                }
-            }
-        }
-        return String.valueOf(tabcompare);
-    }
+
     /**
      * Afficher le résultat
      */
@@ -103,6 +77,7 @@ public abstract class TourdeJeu implements ITourdeJeu {
         return texte;
     }
 
+    protected abstract void saisirCombinaisonJoueur(ArrayList essais);
 }
 
 

@@ -5,14 +5,13 @@ import dumaya.moteur.implementation.JeuChallenger;
 import dumaya.moteur.implementation.JeuDefenseur;
 import dumaya.moteur.implementation.JeuDuel;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 import java.util.Scanner;
 
 /**
- * Une partie de jeu, avec enchainements de plusieurs jeux.
+ * Une session de jeu, avec enchainements de plusieurs jeux.
  */
 public class Partie {
     private String choixModeJeu;
@@ -52,10 +51,10 @@ public class Partie {
     }
 
     public void choixduJeu() {
-        System.out.println("Choisissez le jeu auquel vous voulez jouer : R pour Rechercher +/- ou M pour Mastermind");
+        System.out.println("Choisissez le jeu auquel vous voulez jouer : \n-R pour Rechercher +/-\n- M pour Mastermind");
         Scanner sc = new Scanner(System.in);
         choixJeu = sc.next();
-        System.out.println("Choisissez le mode de jeu auquel vous voulez jouer : C pour Challenger, U pour Duel ou D pour Defense");
+        System.out.println("Choisissez le mode de jeu auquel vous voulez jouer :\n -C pour Challenger,\n- U pour Duel\n-D pour Defense");
         choixModeJeu = sc.next();
         System.out.println("C'est parti pour : Jeu : " + choixJeu + " Mode : " + choixModeJeu);
     }
