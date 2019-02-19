@@ -15,7 +15,7 @@ public class Main
         Partie partie = new Partie();
         partie.initLog();
         partie.chercherConfig();
-        if (args[1]=="-dev"){
+        if (args[0]=="-dev"){
             partie.setModeDev(true);
         }
         partie.choixduJeu();
