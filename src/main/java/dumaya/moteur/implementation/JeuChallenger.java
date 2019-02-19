@@ -11,9 +11,15 @@ public class JeuChallenger extends Jeu {
     @Override
     public boolean unJeu() {
         boolean resultJeu = false;
-        String secret = definirCombinaisonSecrete("J", longueurduSecret, 4);
+        String secret = "";
+        if (choixJeu.equals("R")) {
+            secret=definirCombinaisonSecrete("J", longueurduSecret, 10);
+            resultJeu = derouleJeu(secret, choixJeu, longueurduSecret, 10, nbessaiPossible, "J", "");
+        } else {
+            secret=definirCombinaisonSecrete("J", longueurduSecret, nbdeCouleur);
+            resultJeu = derouleJeu(secret, choixJeu, longueurduSecret, nbdeCouleur, nbessaiPossible, "J", "");
+        }
         afficherSecret(secret, "J");
-        resultJeu = derouleJeu(secret, choixJeu, longueurduSecret, nbdeCouleur, nbessaiPossible,"J", "");
         findeJeu("J", resultJeu);
         return resultJeu;
     }

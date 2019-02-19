@@ -16,14 +16,20 @@ public class JeuDuel extends Jeu {
         System.out.println("Lancement du jeu en mode Duel");
         boolean resultJeu = false;
 
-        String secretOrdi=definirCombinaisonSecrete("J",longueurduSecret, 4);
-        afficherSecret(secretOrdi,"J");
-
-        String secretJoueur = definirCombinaisonSecrete("O", longueurduSecret, 4);
-        afficherSecret(secretJoueur,"O");
-
+        String secretOrdi="";
+        String secretJoueur="";
+        if (choixJeu.equals("R")){
+            secretOrdi=definirCombinaisonSecrete("J",longueurduSecret, 10);
+            afficherSecret(secretOrdi,"J");
+            secretJoueur=definirCombinaisonSecrete("O", longueurduSecret, 10);
+            afficherSecret(secretJoueur,"O");
+        } else {
+            secretOrdi=definirCombinaisonSecrete("J",longueurduSecret, nbdeCouleur);
+            afficherSecret(secretOrdi,"J");
+            secretJoueur=definirCombinaisonSecrete("O", longueurduSecret, nbdeCouleur);
+            afficherSecret(secretJoueur,"O");
+        }
         resultJeu = derouleJeu(secretJoueur, choixJeu, longueurduSecret, nbdeCouleur, nbessaiPossible,"J",secretOrdi);
-
         return resultJeu;
     }
 

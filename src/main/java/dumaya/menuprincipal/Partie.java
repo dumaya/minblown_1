@@ -1,5 +1,6 @@
 package dumaya.menuprincipal;
 
+import dumaya.console.Console;
 import dumaya.moteur.implementation.Jeu;
 import dumaya.moteur.implementation.JeuChallenger;
 import dumaya.moteur.implementation.JeuDefenseur;
@@ -24,7 +25,7 @@ public class Partie {
     private int nbdeCouleur;
     private int nbessaiPossible;
     private int longueurduSecret;
-    //TODO plein de get et de set ?! j'en fait quoi
+    //TODO plein de get et de set ?! j'en fait quoi + gérer la fin de partie
     public String getChoixJeu() {
         return choixJeu;
     }
@@ -56,12 +57,12 @@ public class Partie {
     }
 
     public void choixduJeu() {
-        System.out.println("Choisissez le jeu auquel vous voulez jouer : \n- R pour Rechercher +/-\n- M pour Mastermind");
-        Scanner sc = new Scanner(System.in);
-        choixJeu = sc.next();
-        System.out.println("Choisissez le mode de jeu auquel vous voulez jouer :\n- C pour Challenger,\n- U pour Duel\n- D pour Defense");
-        choixModeJeu = sc.next();
-        System.out.println("C'est parti pour : Jeu : " + choixJeu + " Mode : " + choixModeJeu);
+        System.out.println("*- Choisissez le jeu auquel vous voulez jouer : \n- R pour Recherche +/-\n- M pour Mastermind");
+        Console c = new Console(0,0,"R|M");
+        choixJeu = c.saisieListeDeChoix();
+        System.out.println("*- Choisissez le mode de jeu auquel vous voulez jouer :\n- C pour Challenger,\n- U pour Duel\n- D pour Defense");
+        Console d = new Console(0,0,"C|U|D");
+        choixModeJeu = d.saisieListeDeChoix();
     }
     //TODO utiliser une log
     public void initLog() {

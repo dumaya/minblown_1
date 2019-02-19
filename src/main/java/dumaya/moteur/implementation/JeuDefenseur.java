@@ -12,9 +12,17 @@ public class JeuDefenseur extends Jeu {
     @Override
     public boolean unJeu() {
         boolean resultJeu = false;
-        String secret = definirCombinaisonSecrete("O", longueurduSecret, 4);
-        afficherSecret(secret, "O");
-        resultJeu = derouleJeu(secret, choixJeu, longueurduSecret, nbdeCouleur, nbessaiPossible,"O", "");
+        String secret = "";
+        if (choixJeu.equals("R")){
+            secret=definirCombinaisonSecrete("O", longueurduSecret, 10);
+            afficherSecret(secret, "O");
+            resultJeu = derouleJeu(secret, choixJeu, longueurduSecret, 10, nbessaiPossible,"O", "");
+        } else {
+            secret=definirCombinaisonSecrete("O", longueurduSecret, nbdeCouleur);
+            afficherSecret(secret, "O");
+            resultJeu = derouleJeu(secret, choixJeu, longueurduSecret, nbdeCouleur, nbessaiPossible,"O", "");
+        }
+
         findeJeu("O", resultJeu);
         return resultJeu;
     }

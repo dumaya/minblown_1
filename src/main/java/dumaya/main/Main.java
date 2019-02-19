@@ -8,15 +8,16 @@ import dumaya.menuprincipal.Partie;
  */
 public class Main
 {
-    //TODO ajout d'un paramétre d'appel
     public static <partie> void main(String[] args )
     {
         System.out.println("Bienvenue dans Mindblown");
         Partie partie = new Partie();
         partie.initLog();
         partie.chercherConfig();
-        if (args[0]=="-dev"){
-            partie.setModeDev(true);
+        if (args.length != 0) {
+            if (args[0].equals("-dev")) {
+                partie.setModeDev(true);
+            }
         }
         partie.choixduJeu();
         partie.lancerJeu();

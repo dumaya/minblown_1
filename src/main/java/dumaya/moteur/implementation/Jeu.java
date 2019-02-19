@@ -1,10 +1,10 @@
 package dumaya.moteur.implementation;
 
+import dumaya.console.Console;
 import dumaya.moteur.interf.IJeu;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
 
 /**
  * Un jeu consiste en la définition du ou des secrets et en l'exécution des tours de jeu jusqu'à ce qu'il y ai un gagnant ou que le nb de tours soit dépassé.
@@ -33,7 +33,7 @@ public abstract class  Jeu  implements IJeu {
      * @param nbdeCouleur
      * @return la combinaison archi secrete
      */
-    //TODO randomize + nb de characteres variable + ctrl saisie
+    //TODO  nb de characteres variable
     @Override
     public String definirCombinaisonSecrete(String typeJoueur, int longueurduSecret, int nbdeCouleur) {
         String combiSecrete ="";
@@ -44,9 +44,10 @@ public abstract class  Jeu  implements IJeu {
                 combiSecrete = combiSecrete + tabCombiSecrete[i];
             }
         } else {
-            System.out.println("Choisissez le code secret que l'ordi va devoir trouver");
-            Scanner sc = new Scanner(System.in);
-            combiSecrete = sc.next();
+            System.out.println("Choisissez le code secret que l'ordi va devoir trouver.");
+            Console c = new Console(longueurduSecret,nbdeCouleur,"");
+            combiSecrete=c.saisieCombinaison();
+
         }
         return combiSecrete;
     }
@@ -93,7 +94,6 @@ public abstract class  Jeu  implements IJeu {
      * @return gagné ou perdu !
      */
     protected boolean derouleJeu(String secretJoueur, String choixJeu, int longueurduSecret, int nbdeCouleur, int nbessaiPossible, String typeJoueur, String secretOrdi) {
-        System.out.println("Lancement du jeu en mode "+ typeJoueur);
         boolean gagne=false;
         int nbtour=0;
         ArrayList essais = new ArrayList();
@@ -103,7 +103,7 @@ public abstract class  Jeu  implements IJeu {
         do {
             if (choixJeu.equals("R")) {
 
-                TourdeRecherchePlusMoins tourdeJeuR = new TourdeRecherchePlusMoins(longueurduSecret,nbdeCouleur);
+                TourdeRecherchePlusMoins tourdeJeuR = new TourdeRecherchePlusMoins(longueurduSecret,10);
                 ArrayList essaisPlusTentative = tourdeJeuR.saisirCombinaison(typeJoueur, essais, resultatsPrecedents);
                 if (tourdeJeuR.comparaisonCombinaison(essaisPlusTentative.get(essaisPlusTentative.size()-1).toString(), secretJoueur).equals("====")) {
                     gagne = true;
