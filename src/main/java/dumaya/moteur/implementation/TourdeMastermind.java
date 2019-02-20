@@ -81,6 +81,7 @@ public class TourdeMastermind extends TourdeJeu {
                 }
             } else {
                 // ensuite, on peut trouver le bon code
+                //todo corriger car là l'ordi "triche"
                 for (int i = 0; i < essais.size(); i++) {
                     String unEssai = essais.get(i).toString();
                     char[] tabEssai= unEssai.toCharArray();
@@ -91,7 +92,6 @@ public class TourdeMastermind extends TourdeJeu {
                         if (tabResultat[j] == 'R')
                             tentative[j] = tabEssai[i];
                     }
-
                 }
             }
             essais.add(new String(tentative));

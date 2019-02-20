@@ -26,7 +26,7 @@ public class Partie {
     private int nbdeCouleur;
     private int nbessaiPossible;
     private int longueurduSecret;
-    //TODO plein de get et de set ?! j'en fait quoi + gérer la fin de partie
+    //TODO nettoyer + javadoc
     public String getChoixJeu() {
         return choixJeu;
     }
