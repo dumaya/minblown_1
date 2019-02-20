@@ -56,11 +56,7 @@ public class TourdeMastermind extends TourdeJeu {
     @Override
     protected void saisirCombinaisonOrdi(ArrayList essais, ArrayList resultatsPrecedents){
         if (essais.size()==0) {
-            char[] tentative = new char[longueurduSecret];
-            for (int j = 0; j < longueurduSecret; j++) {
-                tentative[j] = (char) (0+'0');
-            }
-            essais.add(new String(tentative));
+            essais.add(Console.definirCombiGagnante(longueurduSecret,"0"));
         } else {
             // Compter le nb de R
             int nbR = 0;

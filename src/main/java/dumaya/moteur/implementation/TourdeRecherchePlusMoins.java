@@ -41,7 +41,7 @@ public class TourdeRecherchePlusMoins extends TourdeJeu {
     @Override
     protected void saisirCombinaisonOrdi(ArrayList essais, ArrayList resultatPrecedents){
         if (essais.size()==0){
-            essais.add("5555");
+            essais.add(Console.definirCombiGagnante(longueurduSecret,"5"));
         } else {
             String precedentResultat = resultatPrecedents.get(resultatPrecedents.size()-1).toString();
             char[] tabResultPrecedent = precedentResultat.toCharArray();
