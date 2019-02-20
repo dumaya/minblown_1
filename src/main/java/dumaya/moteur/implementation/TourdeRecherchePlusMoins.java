@@ -1,7 +1,8 @@
 package dumaya.moteur.implementation;
 
+import dumaya.console.Console;
+
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class TourdeRecherchePlusMoins extends TourdeJeu {
 
@@ -65,7 +66,7 @@ public class TourdeRecherchePlusMoins extends TourdeJeu {
             }
             essais.add(new String(tabProchaineTentative));
         }
-        System.out.println("L'ordi a choisi " + essais.get(essais.size() - 1).toString());
+        Console.afficheMessage("L'ordi a choisi " + essais.get(essais.size() - 1).toString());
     }
 
 }

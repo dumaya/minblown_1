@@ -9,7 +9,8 @@ import dumaya.moteur.implementation.JeuDuel;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
-import java.util.Scanner;
+
+import static dumaya.console.Console.afficheMessage;
 
 /**
  * Une session de jeu, avec enchainements de plusieurs jeux.
@@ -57,12 +58,10 @@ public class Partie {
     }
 
     public void choixduJeu() {
-        System.out.println("*- Choisissez le jeu auquel vous voulez jouer : \n- R pour Recherche +/-\n- M pour Mastermind");
-        Console c = new Console(0,0,"R|M");
-        choixJeu = c.saisieListeDeChoix();
-        System.out.println("*- Choisissez le mode de jeu auquel vous voulez jouer :\n- C pour Challenger,\n- U pour Duel\n- D pour Defense");
-        Console d = new Console(0,0,"C|U|D");
-        choixModeJeu = d.saisieListeDeChoix();
+        afficheMessage("*- Choisissez le jeu auquel vous voulez jouer : \n- R pour Recherche +/-\n- M pour Mastermind");
+        choixJeu = Console.saisieListeDeChoix("R|M");
+        afficheMessage("*- Choisissez le mode de jeu auquel vous voulez jouer :\n- C pour Challenger,\n- U pour Duel\n- D pour Defense");
+        choixModeJeu = Console.saisieListeDeChoix("C|U|D");
     }
     //TODO utiliser une log
     public void initLog() {

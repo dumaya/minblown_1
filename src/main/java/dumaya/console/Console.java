@@ -3,31 +3,23 @@ package dumaya.console;
 //import org.apache.log4j.Logger;
 
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Console {
-    int longueurduSecret;
-    int nbdeCouleur;
-    String listeDeChoix;
 
-    public Console(int longueurduSecret, int nbdeCouleur, String listeDeChoix){
-        this.longueurduSecret=longueurduSecret;
-        this.nbdeCouleur=nbdeCouleur;
-        this.listeDeChoix=listeDeChoix;
+    public Console(){
     }
 
-    public String saisieCombinaison(){
+    public static String saisieCombinaison(int longueurduSecret, int nbdeCouleur){
 
         Scanner sc = new Scanner(System.in);
         String saisie ="";
         do {
-            System.out.println("Veuillez saisir "+ longueurduSecret + " chiffres allant de 0 à "+(nbdeCouleur-1));
+            System.out.println("Veuillez saisir "+ longueurduSecret + " chiffres allant de 0 à "+(nbdeCouleur -1));
             saisie = sc.next();
-        }while (!saisie.matches("[0-" + (nbdeCouleur-1) + "]{" + longueurduSecret + "}"));
+        }while (!saisie.matches("[0-" + (nbdeCouleur -1) + "]{" + longueurduSecret + "}"));
         return saisie;
     }
-    public String saisieListeDeChoix(){
+    public static String saisieListeDeChoix(String listeDeChoix){
         Scanner sc = new Scanner(System.in);
         String saisie ="";
         do {
@@ -36,12 +28,17 @@ public class Console {
         }while (!saisie.matches(listeDeChoix));
         return saisie;
     }
-    public String definirCombiGagnante(){
-        String combiSecrete="";
+
+    public static String definirCombiGagnante(int longueurduSecret, String charGagnant){
+        String combiGagnante="";
         for (int i = 0; i < longueurduSecret; i++) {
-            combiSecrete = combiSecrete + listeDeChoix;
+            combiGagnante = combiGagnante + charGagnant;
         }
-        return combiSecrete;
+        return combiGagnante;
+    }
+
+    public static void afficheMessage(String texte) {
+        System.out.println(texte);
     }
     //private static final Logger logger = Logger.getLogger(Communication.class);
 }

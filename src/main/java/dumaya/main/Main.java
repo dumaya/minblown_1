@@ -1,5 +1,6 @@
 package dumaya.main;
 
+import dumaya.console.Console;
 import dumaya.menuprincipal.Partie;
 
 /**
@@ -10,7 +11,7 @@ public class Main
 {
     public static <partie> void main(String[] args )
     {
-        System.out.println("Bienvenue dans Mindblown");
+        Console.afficheMessage("Bienvenue dans Mindblown");
         Partie partie = new Partie();
         partie.initLog();
         partie.chercherConfig();

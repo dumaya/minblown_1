@@ -44,10 +44,8 @@ public abstract class  Jeu  implements IJeu {
                 combiSecrete = combiSecrete + tabCombiSecrete[i];
             }
         } else {
-            System.out.println("Choisissez le code secret que l'ordi va devoir trouver.");
-            Console c = new Console(longueurduSecret,nbdeCouleur,"");
-            combiSecrete=c.saisieCombinaison();
-
+            Console.afficheMessage("Choisissez le code secret que l'ordi va devoir trouver.");
+            combiSecrete=Console.saisieCombinaison(longueurduSecret,nbdeCouleur);
         }
         return combiSecrete;
     }
@@ -56,9 +54,9 @@ public abstract class  Jeu  implements IJeu {
     protected void afficherSecret(String secret, String typeJoueur) {
         if (modeDev) {
             if (typeJoueur=="O"){
-                System.out.println("Mode dev : Le secret du Joueur est : " + secret);
+                Console.afficheMessage("Mode dev : Le secret du Joueur est : " + secret);
             } else {
-                System.out.println("Mode dev : Le secret de l'Ordi est : " + secret);
+                Console.afficheMessage("Mode dev : Le secret de l'Ordi est : " + secret);
             }
         }
     }
@@ -67,7 +65,7 @@ public abstract class  Jeu  implements IJeu {
     public void findeJeu(String typeJoueur, boolean resultJeu) {
         if (resultJeu) {
             if (typeJoueur == "J") {
-                System.out.println("\n" +
+                Console.afficheMessage("\n" +
                         " _    __                                                                  ______    ___    ______    _   __    ______           __    __\n" +
                         "| |  / /  ____   __  __   _____         ____ _ _   __  ___  ____         / ____/   /   |  / ____/   / | / /   / ____/          / /   / /\n" +
                         "| | / /  / __ \\ / / / /  / ___/        / __ `/| | / / / _ \\/_  /        / / __    / /| | / / __    /  |/ /   / __/            / /   / / \n" +
@@ -75,10 +73,10 @@ public abstract class  Jeu  implements IJeu {
                         "|___/   \\____/ \\__,_/  /____/         \\__,_/  |___/  \\___/ /___/       \\____/   /_/  |_|\\____/   /_/ |_/   /_____/          (_)   (_)   \n" +
                         "                                                                                                                                        \n");
             } else {
-                    System.out.println("L'ordinateur a gagné");
+                Console.afficheMessage("L'ordinateur a gagné");
                 }
-            } else {
-            System.out.println("Vous avez perdu");
+        } else {
+            Console.afficheMessage("Vous avez perdu");
         }
     }
 
@@ -102,10 +100,10 @@ public abstract class  Jeu  implements IJeu {
         String resultatComparaison="";
         do {
             if (choixJeu.equals("R")) {
-
+                String combiGagnante=Console.definirCombiGagnante(longueurduSecret,"=");
                 TourdeRecherchePlusMoins tourdeJeuR = new TourdeRecherchePlusMoins(longueurduSecret,10);
                 ArrayList essaisPlusTentative = tourdeJeuR.saisirCombinaison(typeJoueur, essais, resultatsPrecedents);
-                if (tourdeJeuR.comparaisonCombinaison(essaisPlusTentative.get(essaisPlusTentative.size()-1).toString(), secretJoueur).equals("====")) {
+                if (tourdeJeuR.comparaisonCombinaison(essaisPlusTentative.get(essaisPlusTentative.size()-1).toString(), secretJoueur).equals(combiGagnante)) {
                     gagne = true;
                 } else {
                     resultatComparaison=tourdeJeuR.comparaisonCombinaison(essaisPlusTentative.get(essaisPlusTentative.size()-1).toString(), secretJoueur);
@@ -115,9 +113,10 @@ public abstract class  Jeu  implements IJeu {
                 }
 
             } else {
+                String combiGagnante=Console.definirCombiGagnante(longueurduSecret,"R");
                 TourdeMastermind tourdeJeuM = new TourdeMastermind(longueurduSecret,nbdeCouleur);
                 ArrayList essaisPlusTentative = tourdeJeuM.saisirCombinaison(typeJoueur, essais,resultatsPrecedents);
-                if (tourdeJeuM.comparaisonCombinaison(essaisPlusTentative.get(essaisPlusTentative.size()-1).toString(), secretJoueur).equals("RRRR")) {
+                if (tourdeJeuM.comparaisonCombinaison(essaisPlusTentative.get(essaisPlusTentative.size()-1).toString(), secretJoueur).equals(combiGagnante)) {
                     gagne = true;
                 } else {
                     resultatComparaison=tourdeJeuM.comparaisonCombinaison(essaisPlusTentative.get(essaisPlusTentative.size()-1).toString(), secretJoueur);

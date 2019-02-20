@@ -1,7 +1,8 @@
 package dumaya.moteur.implementation;
 
+import dumaya.console.Console;
+
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class TourdeMastermind extends TourdeJeu {
 
@@ -78,7 +79,7 @@ public class TourdeMastermind extends TourdeJeu {
             String essaiPrecedent = essais.get(essais.size() - 1).toString();
             char[] tabEssaiPrecedent = essaiPrecedent.toCharArray();
             int n = tabEssaiPrecedent[1];
-            if (nbR != longueurduSecret) {
+            if (nbR < longueurduSecret) {
                 for (int j = 0; j < longueurduSecret; j++) {
                     tentative[j] = (char) (n + 1);
                 }
@@ -99,6 +100,6 @@ public class TourdeMastermind extends TourdeJeu {
             }
             essais.add(new String(tentative));
         }
-        System.out.println("L'ordi a choisi " + essais.get(essais.size() - 1).toString());
+        Console.afficheMessage("L'ordi a choisi " + essais.get(essais.size() - 1).toString());
     }
 }

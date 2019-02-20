@@ -4,7 +4,6 @@ import dumaya.console.Console;
 import dumaya.moteur.interf.ITourdeJeu;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * Une série de x chiffres/couleurs
@@ -36,9 +35,8 @@ public abstract class TourdeJeu implements ITourdeJeu {
 
     @Override
     public void saisirCombinaisonJoueur(ArrayList essais) {
-        System.out.println("*- Saisie combinaison de " + longueurduSecret + " chiffres allant de 0 à " + (nbdeCouleur -1));
-        Console c = new Console(longueurduSecret,nbdeCouleur,"");
-        essais.add(c.saisieCombinaison());
+        Console.afficheMessage("*- A vous de choisir :");
+        essais.add(Console.saisieCombinaison(longueurduSecret, nbdeCouleur));
     }
 
     /**
@@ -47,9 +45,9 @@ public abstract class TourdeJeu implements ITourdeJeu {
     @Override
     public String afficherResultat(String texte, String typeJoueur) {
         if (typeJoueur=="O") {
-            System.out.println("Resultat Ordi  :" + texte);
+            Console.afficheMessage("Resultat Ordi  :" + texte);
         } else {
-            System.out.println("Resultat Joueur:" + texte);
+            Console.afficheMessage("Resultat Joueur:" + texte);
         }
         return texte;
     }
