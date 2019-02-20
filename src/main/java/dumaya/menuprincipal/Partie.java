@@ -107,15 +107,15 @@ public class Partie {
     public void lancerJeu () {
         switch (choixModeJeu) {
             case "C":
-                Jeu jeuJoueC = new JeuChallenger(modeDev, choixJeu, choixModeJeu, nbdeCouleur, nbessaiPossible, longueurduSecret);
+                Jeu jeuJoueC = new JeuChallenger(modeDev, choixJeu, nbdeCouleur, nbessaiPossible, longueurduSecret);
                 jeuJoueC.unJeu();
                 break;
             case "U":
-                Jeu jeuJoueU = new JeuDuel(modeDev, choixJeu, choixModeJeu, nbdeCouleur, nbessaiPossible, longueurduSecret);
+                Jeu jeuJoueU = new JeuDuel(modeDev, choixJeu, nbdeCouleur, nbessaiPossible, longueurduSecret);
                 jeuJoueU.unJeu();
                 break;
             case "D":
-                Jeu jeuJoueD = new JeuDefenseur(modeDev, choixJeu, choixModeJeu, nbdeCouleur, nbessaiPossible, longueurduSecret);
+                Jeu jeuJoueD = new JeuDefenseur(modeDev, choixJeu, nbdeCouleur, nbessaiPossible, longueurduSecret);
                 jeuJoueD.unJeu();
                 break;
             default:

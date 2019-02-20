@@ -20,7 +20,14 @@ public class Main
                 partie.setModeDev(true);
             }
         }
-        partie.choixduJeu();
-        partie.lancerJeu();
+        String choixRejeu="";
+        do {
+            partie.choixduJeu();
+            do {
+                partie.lancerJeu();
+                Console.afficheMessage("*-Voulez-vous :\nChoix A : refaire le même Jeu\nChoix B : choisir un autre jeu\nChoix C : quitter");
+                choixRejeu = Console.saisieListeDeChoix("A|B|C");
+            } while (choixRejeu.equals("A"));
+        } while (choixRejeu.equals("B"));
     }
 }

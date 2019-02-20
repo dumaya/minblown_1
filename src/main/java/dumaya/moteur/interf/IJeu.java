@@ -6,5 +6,5 @@ public interface IJeu {
 
     String definirCombinaisonSecrete(String typeJoueur, int longueurduSecret, int nbdeCouleur);
 
-    void findeJeu(String typeJoueur, boolean resultJeu);
+    void findeJeu(String typeJoueur, boolean resultJeu, String secret);
 }

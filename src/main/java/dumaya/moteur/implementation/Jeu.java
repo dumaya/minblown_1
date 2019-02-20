@@ -12,14 +12,12 @@ import java.util.Random;
 public abstract class  Jeu  implements IJeu {
     private boolean modeDev;
     protected String choixJeu;
-    private String choixModeJeu;
     protected int nbdeCouleur;
     protected int nbessaiPossible;
     protected int longueurduSecret;
-    public Jeu(boolean modeDev, String choixJeu, String choixModeJeu, int nbdeCouleur, int nbessaiPossible, int longueurduSecret) {
+    public Jeu(boolean modeDev, String choixJeu, int nbdeCouleur, int nbessaiPossible, int longueurduSecret) {
         this.modeDev=modeDev;
         this.choixJeu=choixJeu;
-        this.choixModeJeu=choixModeJeu;
         this.nbdeCouleur=nbdeCouleur;
         this.nbessaiPossible=nbessaiPossible;
         this.longueurduSecret=longueurduSecret;
@@ -33,7 +31,6 @@ public abstract class  Jeu  implements IJeu {
      * @param nbdeCouleur
      * @return la combinaison archi secrete
      */
-    //TODO  nb de characteres variable
     @Override
     public String definirCombinaisonSecrete(String typeJoueur, int longueurduSecret, int nbdeCouleur) {
         String combiSecrete ="";
@@ -62,7 +59,7 @@ public abstract class  Jeu  implements IJeu {
     }
 
     @Override
-    public void findeJeu(String typeJoueur, boolean resultJeu) {
+    public void findeJeu(String typeJoueur, boolean resultJeu, String secret) {
         if (resultJeu) {
             if (typeJoueur == "J") {
                 Console.afficheMessage("\n" +
@@ -76,7 +73,7 @@ public abstract class  Jeu  implements IJeu {
                 Console.afficheMessage("L'ordinateur a gagné");
                 }
         } else {
-            Console.afficheMessage("Vous avez perdu");
+            Console.afficheMessage("Vous avez perdu, il fallait trouver : " + secret);
         }
     }
 

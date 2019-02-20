@@ -5,8 +5,8 @@ import dumaya.console.Console;
 import java.util.ArrayList;
 
 public class JeuDuel extends Jeu {
-    public JeuDuel(boolean modeDev, String choixJeu, String choixModeJeu, int nbdeCouleur, int nbessaiPossible, int longueurduSecret) {
-        super(modeDev, choixJeu, choixModeJeu, nbdeCouleur, nbessaiPossible, longueurduSecret);
+    public JeuDuel(boolean modeDev, String choixJeu, int nbdeCouleur, int nbessaiPossible, int longueurduSecret) {
+        super(modeDev, choixJeu, nbdeCouleur, nbessaiPossible, longueurduSecret);
     }
 
     /**
@@ -111,10 +111,10 @@ public class JeuDuel extends Jeu {
         } while ((nbtour <= nbessaiPossible) && !(gagneOrdi || gagneJoueur));
 
         if (gagneJoueur){
-            findeJeu("J", gagneJoueur);
+            findeJeu("J", gagneJoueur,secretOrdi);
         }
         if (gagneOrdi) {
-            findeJeu("O", gagneOrdi);
+            findeJeu("O", gagneOrdi,secretJoueur);
         }
         return (gagneOrdi || gagneJoueur);
     }

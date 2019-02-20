@@ -1,8 +1,8 @@
 package dumaya.moteur.implementation;
 
 public class JeuDefenseur extends Jeu {
-    public JeuDefenseur(boolean modeDev, String choixJeu, String choixModeJeu, int nbdeCouleur, int nbessaiPossible, int longueurduSecret) {
-        super(modeDev, choixJeu, choixModeJeu, nbdeCouleur, nbessaiPossible, longueurduSecret);
+    public JeuDefenseur(boolean modeDev, String choixJeu, int nbdeCouleur, int nbessaiPossible, int longueurduSecret) {
+        super(modeDev, choixJeu, nbdeCouleur, nbessaiPossible, longueurduSecret);
     }
 
     /**
@@ -23,7 +23,7 @@ public class JeuDefenseur extends Jeu {
             resultJeu = derouleJeu(secret, choixJeu, longueurduSecret, nbdeCouleur, nbessaiPossible,"O", "");
         }
 
-        findeJeu("O", resultJeu);
+        findeJeu("O", resultJeu,secret);
         return resultJeu;
     }
 }

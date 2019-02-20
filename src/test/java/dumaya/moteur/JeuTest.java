@@ -25,7 +25,7 @@ public class JeuTest {
         int nbdeCouleur=4;
         int longueurduSecret=4;
         String typeJoueur="J";
-        Jeu jeu = new JeuChallenger(true,"R","C",nbdeCouleur,10,longueurduSecret);
+        Jeu jeu = new JeuChallenger(true,"R", nbdeCouleur,10,longueurduSecret);
         //act
         String combiSecrete= jeu.definirCombinaisonSecrete(typeJoueur,longueurduSecret, nbdeCouleur);
         //assert
@@ -38,7 +38,7 @@ public class JeuTest {
         int nbdeCouleur=4;
         int longueurduSecret=4;
         String typeJoueur="J";
-        Jeu jeu = new JeuChallenger(true,"M","C",nbdeCouleur,10,longueurduSecret);
+        Jeu jeu = new JeuChallenger(true,"M", nbdeCouleur,10,longueurduSecret);
         //act
         String combiSecrete= jeu.definirCombinaisonSecrete(typeJoueur,longueurduSecret, nbdeCouleur);
         //assert
@@ -56,7 +56,7 @@ public class JeuTest {
         int nbdeCouleur=6;
         String typeJoueur="O";
         int longueurduSecret=4;
-        Jeu jeu = new JeuChallenger(true,"R","C",nbdeCouleur,10,longueurduSecret);
+        Jeu jeu = new JeuChallenger(true,"R", nbdeCouleur,10,longueurduSecret);
         //act
         String combiSecrete= jeu.definirCombinaisonSecrete(typeJoueur,longueurduSecret,nbdeCouleur);
         //assert
@@ -74,7 +74,7 @@ public class JeuTest {
         int nbdeCouleur=6;
         int longueurduSecret=23;
         String typeJoueur="O";
-        Jeu jeu = new JeuChallenger(true,"M","C",nbdeCouleur,10,longueurduSecret);
+        Jeu jeu = new JeuChallenger(true,"M", nbdeCouleur,10,longueurduSecret);
         //act
         String combiSecrete= jeu.definirCombinaisonSecrete(typeJoueur,longueurduSecret, nbdeCouleur);
         //assert
@@ -94,7 +94,7 @@ public class JeuTest {
         int nbdeCouleur=4;
         int longueurduSecret=4;
         String typeJoueur="J";
-        Jeu jeu = new JeuChallenger(true,"R","C",nbdeCouleur,10,longueurduSecret);
+        Jeu jeu = new JeuChallenger(true,"R", nbdeCouleur,10,longueurduSecret);
         //act
         boolean result = jeu.unJeu();
         //assert

@@ -1,8 +1,8 @@
 package dumaya.moteur.implementation;
 
 public class JeuChallenger extends Jeu {
-    public JeuChallenger(boolean modeDev, String choixJeu, String choixModeJeu, int nbdeCouleur, int nbessaiPossible, int longueurduSecret) {
-        super(modeDev, choixJeu, choixModeJeu, nbdeCouleur, nbessaiPossible, longueurduSecret);
+    public JeuChallenger(boolean modeDev, String choixJeu, int nbdeCouleur, int nbessaiPossible, int longueurduSecret) {
+        super(modeDev, choixJeu, nbdeCouleur, nbessaiPossible, longueurduSecret);
     }
     /**
      * Définir le code secret (choix par l'ordi) et l'afficher en mode dev et lancer le déroulement des tours de jeu
@@ -20,7 +20,7 @@ public class JeuChallenger extends Jeu {
             resultJeu = derouleJeu(secret, choixJeu, longueurduSecret, nbdeCouleur, nbessaiPossible, "J", "");
         }
         afficherSecret(secret, "J");
-        findeJeu("J", resultJeu);
+        findeJeu("J", resultJeu,secret);
         return resultJeu;
     }
 }
