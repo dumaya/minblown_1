@@ -1,10 +1,10 @@
-package dumaya.menuprincipal;
+package dumaya.service.implementation;
 
 import dumaya.console.Console;
-import dumaya.moteur.implementation.Jeu;
-import dumaya.moteur.implementation.JeuChallenger;
-import dumaya.moteur.implementation.JeuDefenseur;
-import dumaya.moteur.implementation.JeuDuel;
+import dumaya.service.implementation.Jeu;
+import dumaya.service.implementation.JeuChallenger;
+import dumaya.service.implementation.JeuDefenseur;
+import dumaya.service.implementation.JeuDuel;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -69,6 +69,9 @@ public class Partie {
 
     }
 
+    /**
+     * Aller chercher les parametres du fichier de config
+     */
     public void chercherConfig() {
         Properties prop = new Properties();
         ClassLoader classLoader = getClass().getClassLoader();
@@ -104,6 +107,9 @@ public class Partie {
         }
     }
 
+    /**
+     * Choix du jeu en fonction du mode de jeu choisi
+     */
     public void lancerJeu () {
         switch (choixModeJeu) {
             case "C":

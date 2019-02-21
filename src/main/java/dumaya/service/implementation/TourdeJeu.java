@@ -1,12 +1,13 @@
-package dumaya.moteur.implementation;
+package dumaya.service.implementation;
 
 import dumaya.console.Console;
-import dumaya.moteur.interf.ITourdeJeu;
+import dumaya.service.interf.ITourdeJeu;
 
 import java.util.ArrayList;
 
+
 /**
- * Une série de x chiffres/couleurs
+ * Un tour de jeu consiste en la définition (saisie ou logique ordi) d'une tentative, la comparaison avec le secret puis l'affichage du résultat
  */
 //todo affichage du nb de tours
 public abstract class TourdeJeu implements ITourdeJeu {
@@ -33,6 +34,10 @@ public abstract class TourdeJeu implements ITourdeJeu {
         }
     }
 
+    /**
+     * Faire saisir une combinaison au joueur
+     * @param essais liste des essais à alimenter
+     */
     @Override
     public void saisirCombinaisonJoueur(ArrayList essais) {
         Console.afficheMessage("*- A vous de choisir :");

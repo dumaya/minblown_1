@@ -1,8 +1,8 @@
-package dumaya.moteur;
+package dumaya.service;
 
-import dumaya.menuprincipal.Partie;
-import dumaya.moteur.implementation.Jeu;
-import dumaya.moteur.implementation.JeuChallenger;
+import dumaya.service.implementation.Jeu;
+import dumaya.service.implementation.JeuChallenger;
+import dumaya.service.implementation.Partie;
 import org.junit.Before;
 import org.junit.Test;
 

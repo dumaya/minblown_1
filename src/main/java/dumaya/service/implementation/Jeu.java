@@ -1,7 +1,7 @@
-package dumaya.moteur.implementation;
+package dumaya.service.implementation;
 
 import dumaya.console.Console;
-import dumaya.moteur.interf.IJeu;
+import dumaya.service.interf.IJeu;
 
 import java.util.ArrayList;
 import java.util.Random;

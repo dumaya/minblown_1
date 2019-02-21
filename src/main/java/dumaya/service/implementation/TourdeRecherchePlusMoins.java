@@ -1,4 +1,4 @@
-package dumaya.moteur.implementation;
+package dumaya.service.implementation;
 
 import dumaya.console.Console;
 
@@ -11,7 +11,7 @@ public class TourdeRecherchePlusMoins extends TourdeJeu {
     }
 
     /**
-     * Comparaison des combinaisons
+     * Comparaison des combinaisons, à chaque caractére de la tentative, on compare avec le secret. On fabrique une chaine de +-=
      */
     @Override
     public String comparaisonCombinaison(String tentative, String secret) {
@@ -37,7 +37,11 @@ public class TourdeRecherchePlusMoins extends TourdeJeu {
         String texte = (resultat + " <------ Ce n'est pas exact, try again");
         return texte;
     }
-
+    /**
+     * ALgo de détermination de la prochaine tentative
+     * @param essais liste des essais précédents
+     * @param resultatPrecedents liste des resultats précédents
+     */
     @Override
     protected void saisirCombinaisonOrdi(ArrayList essais, ArrayList resultatPrecedents){
         if (essais.size()==0){

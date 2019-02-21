@@ -1,4 +1,4 @@
-package dumaya.moteur.interf;
+package dumaya.service.interf;
 
 import java.util.ArrayList;
 

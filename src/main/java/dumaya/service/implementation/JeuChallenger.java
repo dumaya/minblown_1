@@ -1,4 +1,4 @@
-package dumaya.moteur.implementation;
+package dumaya.service.implementation;
 
 public class JeuChallenger extends Jeu {
     public JeuChallenger(boolean modeDev, String choixJeu, int nbdeCouleur, int nbessaiPossible, int longueurduSecret) {

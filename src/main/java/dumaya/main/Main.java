@@ -1,7 +1,7 @@
 package dumaya.main;
 
 import dumaya.console.Console;
-import dumaya.menuprincipal.Partie;
+import dumaya.service.implementation.Partie;
 
 /**
  * Bienvenue !
@@ -16,6 +16,7 @@ public class Main
         partie.initLog();
         partie.chercherConfig();
         if (args.length != 0) {
+            //todo bug sur le mode dev
             if (args[0].equals("-dev")) {
                 partie.setModeDev(true);
             }

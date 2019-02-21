@@ -1,6 +1,6 @@
 package dumaya.mock;
 
-import dumaya.moteur.interf.ITourdeJeu;
+import dumaya.service.interf.ITourdeJeu;
 
 import java.util.ArrayList;
 

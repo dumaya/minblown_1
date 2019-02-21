@@ -1,4 +1,4 @@
-package dumaya.moteur.interf;
+package dumaya.service.interf;
 
 
 public interface IJeu {

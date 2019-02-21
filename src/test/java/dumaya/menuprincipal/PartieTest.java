@@ -1,5 +1,6 @@
 package dumaya.menuprincipal;
 
+import dumaya.service.implementation.Partie;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;

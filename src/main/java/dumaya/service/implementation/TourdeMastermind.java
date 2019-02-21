@@ -1,4 +1,4 @@
-package dumaya.moteur.implementation;
+package dumaya.service.implementation;
 
 import dumaya.console.Console;
 
@@ -14,25 +14,38 @@ public class TourdeMastermind extends TourdeJeu {
     /**
      * Comparaison des combinaisons, à chaque caractére de la tentative, on compare avec le secret. Si c'est =, on alimente le tableau de retour avec R (rouge)
      * Ensuite on vérifie pour chaque caractére de la tentative si cela correspond à 1 des autres caractéres du secret, dans ce cas on alimente le tableau avec B (blanc) pour mal placé
+     * si le secret est "0123" et la tentative "3100" le résultat est "BRB "
      */
     @Override
     public String comparaisonCombinaison(String tentative, String secret) {
         char[] tabTentative=tentative.toCharArray();
         char[] tabsecret=secret.toCharArray();
         char[] tabcompare= new char[tabsecret.length];
+        //determination des R
         for (int i=0;i<tabsecret.length;i++) {
-            if (tabsecret[i]==tabTentative[i]) {
+            if (tabsecret[i] == tabTentative[i]) {
                 tabcompare[i] = 'R';
-            } else {
-                for (int j=0;j<tabsecret.length;j++) {
-                    if (tabsecret[j]==tabTentative[i]) {
+            }
+        }
+        //determination des B, on passe en revue les char de tentative (qui ne sont pas déjà trouvés R) et on met à blanc dés qu'on trouve une correspondance
+        for (int i=0;i<tabsecret.length;i++) {
+            if (tabcompare[i]!='R') {
+                int j=0;
+                do  {
+                    if (tabsecret[i]==tabTentative[j]){
                         tabcompare[i] = 'B';
+                        j++;
                     }
-                }
+                } while (j<tabsecret.length ||tabcompare[i] == 'B');
             }
         }
         return String.valueOf(tabcompare);
     }
+
+    /**
+     * @param resultat , si le secret est "0123" et la tentative "3100" le résultat est "BRB "
+     * @return texte : description du résultat du mastermind à afficher
+     */
     @Override
     public String preparationResultat(String resultat) {
         int B=0;
@@ -53,23 +66,20 @@ public class TourdeMastermind extends TourdeJeu {
         String texte=("Vous avez " + R + " pions bien placés et " + B + " pions mal placés mais de la bonne couleur et donc " + Wrong + " pions complétement faux.");
         return texte;
     }
+
+    /**
+     * ALgo de détermination de la prochaine tentative
+     * @param essais liste des essais précédents
+     * @param resultatsPrecedents liste des resultats précédents
+     */
     @Override
     protected void saisirCombinaisonOrdi(ArrayList essais, ArrayList resultatsPrecedents){
         if (essais.size()==0) {
+            // 1er essai à 0000
             essais.add(Console.definirCombiGagnante(longueurduSecret,"0"));
         } else {
-            // Compter le nb de R
-            int nbR = 0;
-            for (int i = 0; i < resultatsPrecedents.size(); i++) {
-                String precedentResultat = resultatsPrecedents.get(i).toString();
-                char[] tabPrecedentResultat = precedentResultat.toCharArray();
-
-                for (int j = 0; j < longueurduSecret; j++) {
-                    if (tabPrecedentResultat[j] == 'R')
-                        nbR++;
-                }
-
-            }
+            // Compter le nb de Rouges
+            int nbR = getNbR(resultatsPrecedents);
             //tant que nbR n'est pas égal à la longueur du secret, on teste 0000 puis 1111 ...
             char[] tentative = new char[longueurduSecret];
             String essaiPrecedent = essais.get(essais.size() - 1).toString();
@@ -97,5 +107,23 @@ public class TourdeMastermind extends TourdeJeu {
             essais.add(new String(tentative));
         }
         Console.afficheMessage("L'ordi a choisi " + essais.get(essais.size() - 1).toString());
+    }
+
+    /**
+     * @param resultatsPrecedents
+     * @return nbR le nombre de rouges dans tous les résultats précédents
+     */
+    private int getNbR(ArrayList resultatsPrecedents) {
+        int nbR = 0;
+        for (int i = 0; i < resultatsPrecedents.size(); i++) {
+            String precedentResultat = resultatsPrecedents.get(i).toString();
+            char[] tabPrecedentResultat = precedentResultat.toCharArray();
+
+            for (int j = 0; j < longueurduSecret; j++) {
+                if (tabPrecedentResultat[j] == 'R')
+                    nbR++;
+            }
+        }
+        return nbR;
     }
 }
