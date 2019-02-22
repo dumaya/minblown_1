@@ -6,6 +6,8 @@ import dumaya.service.interf.IJeu;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static dumaya.console.Console.LOG;
+
 /**
  * Un jeu consiste en la définition du ou des secrets et en l'exécution des tours de jeu jusqu'à ce qu'il y ai un gagnant ou que le nb de tours soit dépassé.
  */
@@ -40,6 +42,7 @@ public abstract class  Jeu  implements IJeu {
             for (int i = 0; i < longueurduSecret; i++) {
                 combiSecrete = combiSecrete + tabCombiSecrete[i];
             }
+            LOG.debug("Combisecrete : /s Typedejoueur : /s ",combiSecrete, typeJoueur);
         } else {
             Console.afficheMessage("Choisissez le code secret que l'ordi va devoir trouver.");
             combiSecrete=Console.saisieCombinaison(longueurduSecret,nbdeCouleur);
@@ -123,6 +126,7 @@ public abstract class  Jeu  implements IJeu {
                 }
             }
             nbtour++;
+            LOG.debug("Tour n° : /d",nbtour);
         } while ((nbtour <= nbessaiPossible) && !gagne);
 
         return gagne;

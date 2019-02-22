@@ -1,5 +1,7 @@
 package dumaya.service.implementation;
 
+import static dumaya.console.Console.LOG;
+
 public class JeuDefenseur extends Jeu {
     public JeuDefenseur(boolean modeDev, String choixJeu, int nbdeCouleur, int nbessaiPossible, int longueurduSecret) {
         super(modeDev, choixJeu, nbdeCouleur, nbessaiPossible, longueurduSecret);
@@ -14,10 +16,12 @@ public class JeuDefenseur extends Jeu {
         boolean resultJeu = false;
         String secret = "";
         if (choixJeu.equals("R")){
+            LOG.info("Début d'un jeu Recherche +- mode Defenseur");
             secret=definirCombinaisonSecrete("O", longueurduSecret, 10);
             afficherSecret(secret, "O");
             resultJeu = derouleJeu(secret, choixJeu, longueurduSecret, 10, nbessaiPossible,"O", "");
         } else {
+            LOG.info("Début d'un jeu Mastermind mode Defenseur");
             secret=definirCombinaisonSecrete("O", longueurduSecret, nbdeCouleur);
             afficherSecret(secret, "O");
             resultJeu = derouleJeu(secret, choixJeu, longueurduSecret, nbdeCouleur, nbessaiPossible,"O", "");

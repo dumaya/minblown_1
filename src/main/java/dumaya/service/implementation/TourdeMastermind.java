@@ -4,6 +4,8 @@ import dumaya.console.Console;
 
 import java.util.ArrayList;
 
+import static dumaya.console.Console.LOG;
+
 public class TourdeMastermind extends TourdeJeu {
 
     public TourdeMastermind(int longueurduSecret, int nbdeCouleur) {
@@ -74,6 +76,7 @@ public class TourdeMastermind extends TourdeJeu {
      */
     @Override
     protected void saisirCombinaisonOrdi(ArrayList essais, ArrayList resultatsPrecedents){
+        LOG.info("Début de l'algo de determination d'une tentative par l'ordi pour le mastermind");
         if (essais.size()==0) {
             // 1er essai à 0000
             essais.add(Console.definirCombiGagnante(longueurduSecret,"0"));

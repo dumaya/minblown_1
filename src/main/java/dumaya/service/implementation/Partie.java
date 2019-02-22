@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import static dumaya.console.Console.LOG;
 import static dumaya.console.Console.afficheMessage;
 
 /**
@@ -63,11 +64,6 @@ public class Partie {
         afficheMessage("*- Choisissez le mode de jeu auquel vous voulez jouer :\n- C pour Challenger,\n- U pour Duel\n- D pour Defense");
         choixModeJeu = Console.saisieListeDeChoix("C|U|D");
     }
-    //TODO utiliser une log
-    public void initLog() {
-
-
-    }
 
     /**
      * Aller chercher les parametres du fichier de config
@@ -95,13 +91,13 @@ public class Partie {
             }
 
         } catch (IOException ex) {
-            ex.printStackTrace();
+            LOG.fatal("Problème de chargement du fichier config.properties",ex);
         } finally {
             if (input != null) {
                 try {
                     input.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    LOG.fatal("Problème lors de la fermetude du fichier config.properties",e);
                 }
             }
         }
@@ -125,6 +121,7 @@ public class Partie {
                 jeuJoueD.unJeu();
                 break;
             default:
+                LOG.error("Cas du choix du mode de jeu non géré");
                 break;
         }
     }

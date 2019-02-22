@@ -4,6 +4,8 @@ import dumaya.console.Console;
 
 import java.util.ArrayList;
 
+import static dumaya.console.Console.LOG;
+
 public class JeuDuel extends Jeu {
     public JeuDuel(boolean modeDev, String choixJeu, int nbdeCouleur, int nbessaiPossible, int longueurduSecret) {
         super(modeDev, choixJeu, nbdeCouleur, nbessaiPossible, longueurduSecret);
@@ -21,11 +23,13 @@ public class JeuDuel extends Jeu {
         String secretOrdi="";
         String secretJoueur="";
         if (choixJeu.equals("R")){
+            LOG.info("Début d'un jeu Recherche+- mode Duel");
             secretOrdi=definirCombinaisonSecrete("J",longueurduSecret, 10);
             afficherSecret(secretOrdi,"J");
             secretJoueur=definirCombinaisonSecrete("O", longueurduSecret, 10);
             afficherSecret(secretJoueur,"O");
         } else {
+            LOG.info("Début d'un jeu Mastermind mode Duel");
             secretOrdi=definirCombinaisonSecrete("J",longueurduSecret, nbdeCouleur);
             afficherSecret(secretOrdi,"J");
             secretJoueur=definirCombinaisonSecrete("O", longueurduSecret, nbdeCouleur);
@@ -49,7 +53,6 @@ public class JeuDuel extends Jeu {
      */
     @Override
     protected boolean derouleJeu(String secretJoueur, String choixJeu, int longueurduSecret, int nbdeCouleur, int nbessaiPossible, String typeJoueur, String secretOrdi) {
-
         boolean gagneOrdi=false;
         boolean gagneJoueur=false;
         int nbtour=0;
@@ -108,6 +111,7 @@ public class JeuDuel extends Jeu {
 
             }
             nbtour++;
+            LOG.debug("Tour n° : /d",nbtour);
         } while ((nbtour <= nbessaiPossible) && !(gagneOrdi || gagneJoueur));
 
         if (gagneJoueur){
