@@ -13,7 +13,7 @@ Chaque jeu est décliné en 3 modes de jeu :
 
 #Compilation
 Le projet a été construit avec Maven.
-Pour le compiler, il faut aller dans le dossier Mindblown et faire : mvn package
+Pour le compiler, il faut aller dans le dossier Mindblown et faire : mvn clean compile assembly:single
 
 #Comment jouer ?
 Lancer mindblown.bat 

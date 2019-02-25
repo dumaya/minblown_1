@@ -99,7 +99,7 @@ public class JeuTest {
         assertTrue(result);
     }
     @Test
-    public void jeuDefenseurMastermindaleatoire50() {
+    public void jeuDefenseurMastermindaleatoire15() {
         //arrange
         int nbdeCouleur = 4;
         int longueurduSecret = 4;
@@ -120,10 +120,10 @@ public class JeuTest {
             //assert
             assertTrue(result);
             j++;
-        }while (j<50);
+        }while (j<15);
     }
     @Test
-    public void jeuDefenseurRecherchedaleatoire50() {
+    public void jeuDefenseurRecherchedaleatoire15() {
         //arrange
         int nbdeCouleur = 10;
         int longueurduSecret = 6;
@@ -144,6 +144,6 @@ public class JeuTest {
             //assert
             assertTrue(result);
             j++;
-        }while (j<50);
+        }while (j<15);
     }
 }
