@@ -16,7 +16,6 @@ public class Main
         LOG.info("Début d'une partie");
         Console.afficheMessage("Bienvenue dans Mindblown");
         Partie partie = new Partie();
-        partie.initLog();
         partie.chercherConfig();
         if (args.length != 0) {
             //todo bug sur le mode dev
@@ -29,12 +28,11 @@ public class Main
         String choixRejeu="";
         do {
             partie.choixduJeu();
-
             do {
                 partie.lancerJeu();
-                Console.afficheMessage("*-Voulez-vous :\nChoix A : refaire le même Jeu\nChoix B : choisir un autre jeu\nChoix C : quitter");
-                choixRejeu = Console.saisieListeDeChoix("A|B|C");
-            } while (choixRejeu.equals("A"));
-        } while (choixRejeu.equals("B"));
+                Console.afficheMessage("*-Voulez-vous :\nChoix J : refaire le même Jeu\nChoix A : choisir un autre jeu\nChoix Q : quitter");
+                choixRejeu = Console.saisieListeDeChoix("J|A|Q");
+            } while (choixRejeu.equals("J"));
+        } while (choixRejeu.equals("A"));
     }
 }

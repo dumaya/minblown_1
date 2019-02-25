@@ -26,7 +26,6 @@ public class JeuDefenseur extends Jeu {
             afficherSecret(secret, "O");
             resultJeu = derouleJeu(secret, choixJeu, longueurduSecret, nbdeCouleur, nbessaiPossible,"O", "");
         }
-
         findeJeu("O", resultJeu,secret);
         return resultJeu;
     }

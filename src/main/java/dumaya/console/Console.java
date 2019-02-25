@@ -19,9 +19,9 @@ public class Console {
         System.out.println("Veuillez saisir " + longueurduSecret + " chiffres allant de 0 à " + (nbdeCouleur - 1));
         saisie = sc.next();
         while (!saisie.matches("[0-" + (nbdeCouleur - 1) + "]{" + longueurduSecret + "}")) {
+            LOG.warn("Erreur de saisie d'une combinaison: {} alors qu'il faut {} chiffres allant de 0 à {}", saisie, longueurduSecret, nbdeCouleur - 1);
             System.out.println("Erreur de saisie, veuillez svp saisir " + longueurduSecret + " chiffres allant de 0 à " + (nbdeCouleur - 1));
             saisie = sc.next();
-            LOG.warn("Erreur de saisie d'une combinaison: %s alors qu'il faut %d chiffres allant de 0 à %d", saisie, longueurduSecret, nbdeCouleur - 1);
         }
         return saisie;
     }
@@ -32,9 +32,9 @@ public class Console {
         System.out.println("Veuillez saisir un des choix de la liste :" + listeDeChoix);
         saisie = sc.next();
         while (!saisie.matches(listeDeChoix)) {
+            LOG.warn("Erreur de saisie : {} alors qu'il faut choisir entre ces choix : {}", saisie, listeDeChoix);
             System.out.println("Erreur de saisie, veuillez svp saisir un des choix de la liste :" + listeDeChoix);
             saisie = sc.next();
-            LOG.warn("Erreur de saisie : %s alors qu'il faut choisir entre ces choix : %d", saisie, listeDeChoix);
         }
         return saisie;
     }
@@ -50,6 +50,4 @@ public class Console {
     public static void afficheMessage(String texte) {
         System.out.println(texte);
     }
-
-
 }

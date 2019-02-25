@@ -99,6 +99,8 @@ public abstract class  Jeu  implements IJeu {
 
         String resultatComparaison="";
         do {
+            Console.afficheMessage("** TOUR "+(nbtour+1)+" **");
+            LOG.debug("Tour n° : {}",nbtour+1);
             if (choixJeu.equals("R")) {
                 String combiGagnante=Console.definirCombiGagnante(longueurduSecret,"=");
                 TourdeRecherchePlusMoins tourdeJeuR = new TourdeRecherchePlusMoins(longueurduSecret,10);
@@ -126,7 +128,6 @@ public abstract class  Jeu  implements IJeu {
                 }
             }
             nbtour++;
-            LOG.debug("Tour n° : /d",nbtour);
         } while ((nbtour <= nbessaiPossible) && !gagne);
 
         return gagne;

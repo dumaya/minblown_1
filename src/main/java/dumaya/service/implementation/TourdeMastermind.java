@@ -32,13 +32,10 @@ public class TourdeMastermind extends TourdeJeu {
         //determination des B, on passe en revue les char de tentative (qui ne sont pas déjà trouvés R) et on met à blanc dés qu'on trouve une correspondance
         for (int i=0;i<tabsecret.length;i++) {
             if (tabcompare[i]!='R') {
-                int j=0;
-                do  {
-                    if (tabsecret[i]==tabTentative[j]){
+                for (int j=0;j<tabsecret.length;j++){
+                    if (i!=j && tabsecret[j]==tabTentative[i]&&tabcompare[j]!='R')
                         tabcompare[i] = 'B';
-                        j++;
-                    }
-                } while (j<tabsecret.length ||tabcompare[i] == 'B');
+                }
             }
         }
         return String.valueOf(tabcompare);
@@ -65,7 +62,7 @@ public class TourdeMastermind extends TourdeJeu {
                 }
             }
         }
-        String texte=("Vous avez " + R + " pions bien placés et " + B + " pions mal placés mais de la bonne couleur et donc " + Wrong + " pions complétement faux.");
+        String texte=("Vous avez " + R + " R pions bien placés et " + B + " B pions mal placés mais de la bonne couleur et donc " + Wrong + " pions complétement faux : \"" + resultat+"\"");
         return texte;
     }
 

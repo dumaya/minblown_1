@@ -17,13 +17,14 @@ public class JeuChallenger extends Jeu {
         if (choixJeu.equals("R")) {
             LOG.info("Début d'un jeu Recherche+- mode Challenger");
             secret=definirCombinaisonSecrete("J", longueurduSecret, 10);
+            afficherSecret(secret, "J");
             resultJeu = derouleJeu(secret, choixJeu, longueurduSecret, 10, nbessaiPossible, "J", "");
         } else {
             LOG.info("Début d'un jeu Mastermind mode Challenger");
             secret=definirCombinaisonSecrete("J", longueurduSecret, nbdeCouleur);
+            afficherSecret(secret, "J");
             resultJeu = derouleJeu(secret, choixJeu, longueurduSecret, nbdeCouleur, nbessaiPossible, "J", "");
         }
-        afficherSecret(secret, "J");
         findeJeu("J", resultJeu,secret);
         return resultJeu;
     }

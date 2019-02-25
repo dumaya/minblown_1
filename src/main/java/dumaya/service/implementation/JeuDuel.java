@@ -63,6 +63,8 @@ public class JeuDuel extends Jeu {
         ArrayList resultatComparaisonJoueur=new ArrayList();
 
         do {
+            Console.afficheMessage("** TOUR "+(nbtour+1)+" **");
+            LOG.debug("Tour n° : {}",nbtour+1);
             if (choixJeu.equals("R")) {
                 String combiGagnante=Console.definirCombiGagnante(longueurduSecret,"=");
                 TourdeRecherchePlusMoins tourdeJeuROrdi = new TourdeRecherchePlusMoins(longueurduSecret,10);
@@ -111,7 +113,6 @@ public class JeuDuel extends Jeu {
 
             }
             nbtour++;
-            LOG.debug("Tour n° : /d",nbtour);
         } while ((nbtour <= nbessaiPossible) && !(gagneOrdi || gagneJoueur));
 
         if (gagneJoueur){

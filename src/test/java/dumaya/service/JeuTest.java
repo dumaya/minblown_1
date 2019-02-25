@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.util.Random;
 
 import static org.junit.Assert.*;
 
@@ -50,7 +51,6 @@ public class JeuTest {
         for (int i = 0; i < combiSecrete.length(); i++) {
             assertTrue(nbdeCouleur+'0' >= tabsecret[i]);
         }
-
     }
 
 
@@ -73,7 +73,7 @@ public class JeuTest {
     }
 
     @Test
-    public void jeuDefenseur() {
+    public void jeuDefenseurRecherche() {
         //arrange
         int nbdeCouleur = 4;
         int longueurduSecret = 4;
@@ -84,5 +84,66 @@ public class JeuTest {
         boolean result = jeu.unJeu();
         //assert
         assertTrue(result);
+    }
+    @Test
+    public void jeuDefenseurMastermind() {
+        //arrange
+        int nbdeCouleur = 4;
+        int longueurduSecret = 4;
+        String typeJoueur = "J";
+        System.setIn(new ByteArrayInputStream("1203\n".getBytes()));
+        Jeu jeu = new JeuDefenseur(true, "M", nbdeCouleur, 10, longueurduSecret);
+        //act
+        boolean result = jeu.unJeu();
+        //assert
+        assertTrue(result);
+    }
+    @Test
+    public void jeuDefenseurMastermindaleatoire50() {
+        //arrange
+        int nbdeCouleur = 4;
+        int longueurduSecret = 4;
+        String typeJoueur = "J";
+
+        int j=0;
+        do {
+            String combiSecrete="";
+            Random r = new Random();
+            int[] tabCombiSecrete = r.ints(longueurduSecret, 0, nbdeCouleur).toArray();
+            for (int i = 0; i < longueurduSecret; i++) {
+                combiSecrete = combiSecrete + tabCombiSecrete[i];
+            }
+            Jeu jeu = new JeuDefenseur(true, "M", nbdeCouleur, 10, longueurduSecret);
+            System.setIn(new ByteArrayInputStream((combiSecrete + "\n").getBytes()));
+            //act
+            boolean result = jeu.unJeu();
+            //assert
+            assertTrue(result);
+            j++;
+        }while (j<50);
+    }
+    @Test
+    public void jeuDefenseurRecherchedaleatoire50() {
+        //arrange
+        int nbdeCouleur = 10;
+        int longueurduSecret = 6;
+        String typeJoueur = "J";
+
+        int j=0;
+        do {
+            String combiSecrete="";
+            Random r = new Random();
+            int[] tabCombiSecrete = r.ints(longueurduSecret, 0, nbdeCouleur).toArray();
+            for (int i = 0; i < longueurduSecret; i++) {
+                combiSecrete = combiSecrete + tabCombiSecrete[i];
+            }
+            Jeu jeu = new JeuDefenseur(true, "R", nbdeCouleur, 6, longueurduSecret);
+            System.setIn(new ByteArrayInputStream((combiSecrete + "\n").getBytes()));
+            //act
+            boolean result = jeu.unJeu();
+            //assert
+            assertTrue(result);
+            j++;
+        }while (j<50);
     }
 }
