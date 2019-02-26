@@ -1,10 +1,6 @@
 package dumaya.service.implementation;
 
 import dumaya.console.Console;
-import dumaya.service.implementation.Jeu;
-import dumaya.service.implementation.JeuChallenger;
-import dumaya.service.implementation.JeuDefenseur;
-import dumaya.service.implementation.JeuDuel;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -134,7 +130,7 @@ public class Partie {
         this.longueurduSecret = longueurduSecret;
     }
 
-    public void setNbessaiPossible ( int nbessaiPossible){
+    private void setNbessaiPossible(int nbessaiPossible){
         this.nbessaiPossible = nbessaiPossible;
     }
 

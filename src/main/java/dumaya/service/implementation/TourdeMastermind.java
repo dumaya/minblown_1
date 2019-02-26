@@ -62,8 +62,7 @@ public class TourdeMastermind extends TourdeJeu {
                 }
             }
         }
-        String texte=("Vous avez " + R + " R pions bien placés et " + B + " B pions mal placés mais de la bonne couleur et donc " + Wrong + " pions complétement faux : \"" + resultat+"\"");
-        return texte;
+        return ("Vous avez " + R + " R pions bien placés et " + B + " B pions mal placés mais de la bonne couleur et donc " + Wrong + " pions complétement faux : \"" + resultat+"\"");
     }
 
     /**
@@ -78,7 +77,7 @@ public class TourdeMastermind extends TourdeJeu {
             // 1er essai à 0000
             essais.add(Console.definirCombiGagnante(longueurduSecret,"0"));
         } else {
-            // Compter le nb de Rouges
+            // Compter le nb de Rouges présents dans les prédédentes tentatives
             int nbR = getNbR(resultatsPrecedents);
             //tant que nbR n'est pas égal à la longueur du secret, on teste 0000 puis 1111 ...
             char[] tentative = new char[longueurduSecret];
