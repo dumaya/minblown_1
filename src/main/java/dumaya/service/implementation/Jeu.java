@@ -128,7 +128,7 @@ public abstract class  Jeu  implements IJeu {
                 }
             }
             nbtour++;
-        } while ((nbtour <= nbessaiPossible) && !gagne);
+        } while ((nbtour < nbessaiPossible) && !gagne);
 
         return gagne;
     }

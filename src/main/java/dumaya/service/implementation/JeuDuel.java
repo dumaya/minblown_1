@@ -113,7 +113,7 @@ public class JeuDuel extends Jeu {
 
             }
             nbtour++;
-        } while ((nbtour <= nbessaiPossible) && !(gagneOrdi || gagneJoueur));
+        } while ((nbtour < nbessaiPossible) && !(gagneOrdi || gagneJoueur));
 
         if (gagneJoueur){
             findeJeu("J", gagneJoueur,secretOrdi);
