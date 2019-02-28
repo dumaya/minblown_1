@@ -1,5 +1,6 @@
 package dumaya.service;
 
+import dumaya.outils.Utils;
 import dumaya.service.implementation.Jeu;
 import dumaya.service.implementation.JeuChallenger;
 import dumaya.service.implementation.JeuDefenseur;
@@ -9,7 +10,6 @@ import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.util.Random;
 
 import static org.junit.Assert.*;
 
@@ -107,12 +107,7 @@ public class JeuTest {
 
         int j=0;
         do {
-            String combiSecrete="";
-            Random r = new Random();
-            int[] tabCombiSecrete = r.ints(longueurduSecret, 0, nbdeCouleur).toArray();
-            for (int i = 0; i < longueurduSecret; i++) {
-                combiSecrete = combiSecrete + tabCombiSecrete[i];
-            }
+            String combiSecrete= Utils.genereCombiSecreteAleatoire(longueurduSecret,nbdeCouleur);
             Jeu jeu = new JeuDefenseur(true, "M", nbdeCouleur, 10, longueurduSecret);
             System.setIn(new ByteArrayInputStream((combiSecrete + "\n").getBytes()));
             //act
@@ -131,12 +126,7 @@ public class JeuTest {
 
         int j=0;
         do {
-            String combiSecrete="";
-            Random r = new Random();
-            int[] tabCombiSecrete = r.ints(longueurduSecret, 0, nbdeCouleur).toArray();
-            for (int i = 0; i < longueurduSecret; i++) {
-                combiSecrete = combiSecrete + tabCombiSecrete[i];
-            }
+            String combiSecrete=Utils.genereCombiSecreteAleatoire(longueurduSecret,nbdeCouleur);
             Jeu jeu = new JeuDefenseur(true, "R", nbdeCouleur, 6, longueurduSecret);
             System.setIn(new ByteArrayInputStream((combiSecrete + "\n").getBytes()));
             //act

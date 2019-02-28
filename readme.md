@@ -11,6 +11,13 @@ Chaque jeu est décliné en 3 modes de jeu :
 - Mode Defenseur dans lequel le joueur saisie la combinaison que l'ordi doit trouver
 - Mode Duel dans lequel joueur et ordi jouent en simultané pour déterminer les combinaisons secretes.
 
+#Pré-requis
+Version de Java
+JDK
+
+#Arborescence
+
+
 #Compilation
 Le projet a été construit avec Maven.
 Pour le compiler, il faut aller dans le dossier Mindblown et faire : mvn clean compile assembly:single

@@ -1,12 +1,12 @@
 package dumaya.service.implementation;
 
 import dumaya.console.Console;
+import dumaya.outils.Utils;
 import dumaya.service.interf.IJeu;
 
 import java.util.ArrayList;
-import java.util.Random;
 
-import static dumaya.console.Console.LOG;
+import static dumaya.outils.Utils.LOG;
 
 /**
  * Un jeu consiste en la définition du ou des secrets et en l'exécution des tours de jeu jusqu'à ce qu'il y ai un gagnant ou que le nb de tours soit dépassé.
@@ -37,11 +37,7 @@ public abstract class  Jeu  implements IJeu {
     public String definirCombinaisonSecrete(String typeJoueur, int longueurduSecret, int nbdeCouleur) {
         String combiSecrete ="";
         if (typeJoueur.equals("J")){
-            Random r=new Random();
-            int[] tabCombiSecrete = r.ints(longueurduSecret,0,nbdeCouleur).toArray();
-            for (int i = 0; i < longueurduSecret; i++) {
-                combiSecrete = combiSecrete + tabCombiSecrete[i];
-            }
+            combiSecrete = Utils.genereCombiSecreteAleatoire(longueurduSecret, nbdeCouleur);
             LOG.debug("Combisecrete : /s Typedejoueur : /s ",combiSecrete, typeJoueur);
         } else {
             Console.afficheMessage("Choisissez le code secret que l'ordi va devoir trouver.");

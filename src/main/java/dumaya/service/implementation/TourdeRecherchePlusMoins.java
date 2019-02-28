@@ -4,7 +4,7 @@ import dumaya.console.Console;
 
 import java.util.ArrayList;
 
-import static dumaya.console.Console.LOG;
+import static dumaya.outils.Utils.LOG;
 
 public class TourdeRecherchePlusMoins extends TourdeJeu {
 

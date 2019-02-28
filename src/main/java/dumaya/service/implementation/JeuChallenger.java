@@ -1,6 +1,6 @@
 package dumaya.service.implementation;
 
-import static dumaya.console.Console.LOG;
+import static dumaya.outils.Utils.LOG;
 
 public class JeuChallenger extends Jeu {
     public JeuChallenger(boolean modeDev, String choixJeu, int nbdeCouleur, int nbessaiPossible, int longueurduSecret) {

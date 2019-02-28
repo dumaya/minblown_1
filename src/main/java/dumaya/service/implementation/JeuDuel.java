@@ -4,7 +4,7 @@ import dumaya.console.Console;
 
 import java.util.ArrayList;
 
-import static dumaya.console.Console.LOG;
+import static dumaya.outils.Utils.LOG;
 
 public class JeuDuel extends Jeu {
     public JeuDuel(boolean modeDev, String choixJeu, int nbdeCouleur, int nbessaiPossible, int longueurduSecret) {

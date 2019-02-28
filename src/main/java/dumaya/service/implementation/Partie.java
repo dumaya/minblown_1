@@ -2,11 +2,7 @@ package dumaya.service.implementation;
 
 import dumaya.console.Console;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
-
-import static dumaya.console.Console.LOG;
+import static dumaya.outils.Utils.LOG;
 import static dumaya.console.Console.afficheMessage;
 
 /**
@@ -62,44 +58,6 @@ public class Partie {
     }
 
     /**
-     * Aller chercher les parametres du fichier de config
-     */
-    public void chercherConfig() {
-        Properties prop = new Properties();
-        ClassLoader classLoader = getClass().getClassLoader();
-        InputStream input = null;
-
-        try {
-
-            input = classLoader.getResourceAsStream("config.properties");
-
-            // load a properties file
-            prop.load(input);
-
-            // get the property value and print it out
-            setNbdeCouleur(Integer.valueOf(prop.getProperty("nbdeCouleur")));
-            setLongueurduSecret(Integer.valueOf(prop.getProperty("longueurduSecret")));
-            setNbessaiPossible(Integer.valueOf(prop.getProperty("nbessaiPossible")));
-            if (Integer.valueOf(prop.getProperty("modeDev")) == 1) {
-                setModeDev(true);
-            } else {
-                setModeDev(false);
-            }
-
-        } catch (IOException ex) {
-            LOG.fatal("Problème de chargement du fichier config.properties",ex);
-        } finally {
-            if (input != null) {
-                try {
-                    input.close();
-                } catch (IOException e) {
-                    LOG.fatal("Problème lors de la fermetude du fichier config.properties",e);
-                }
-            }
-        }
-    }
-
-    /**
      * Choix du jeu en fonction du mode de jeu choisi
      */
     public void lancerJeu () {
@@ -130,7 +88,7 @@ public class Partie {
         this.longueurduSecret = longueurduSecret;
     }
 
-    private void setNbessaiPossible(int nbessaiPossible){
+    public void setNbessaiPossible(int nbessaiPossible){
         this.nbessaiPossible = nbessaiPossible;
     }
 
