@@ -11,7 +11,6 @@ public class Console {
     }
 
     public static String saisieCombinaison(int longueurduSecret, int nbdeCouleur) {
-
         Scanner sc = new Scanner(System.in);
         String saisie = "";
         System.out.println("Veuillez saisir " + longueurduSecret + " chiffres allant de 0 à " + (nbdeCouleur - 1));
