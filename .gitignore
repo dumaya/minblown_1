@@ -3,3 +3,7 @@
 /mindblown.bat
 /mindblown_mode_dev.bat
 /logfile.log
+/target/archive-tmp
+/target/classes/
+/target/generated-sources
+/target/maven-status/
