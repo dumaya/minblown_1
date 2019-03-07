@@ -61,7 +61,8 @@ public class JeuDuel extends Jeu {
 
         ArrayList resultatComparaisonOrdi=new ArrayList();
         ArrayList resultatComparaisonJoueur=new ArrayList();
-
+        String resultatComparaison="";
+        LOG.debug("Secret joueur : {} Secret Ordi : {}",secretJoueur, secretOrdi);
         do {
             Console.afficheMessage("** TOUR "+(nbtour+1)+" **");
             LOG.debug("Tour n° : {}",nbtour+1);
@@ -76,16 +77,18 @@ public class JeuDuel extends Jeu {
                 if (tourdeJeuROrdi.comparaisonCombinaison(essaisPlusTentativeOrdi.get(essaisPlusTentativeOrdi.size()-1).toString(), secretJoueur).equals(combiGagnante)) {
                     gagneOrdi = true;
                 } else {
-                    resultatComparaisonOrdi.add(tourdeJeuROrdi.comparaisonCombinaison(essaisPlusTentativeOrdi.get(essaisPlusTentativeOrdi.size()-1).toString(),secretJoueur));
-                    tourdeJeuROrdi.afficherResultat(tourdeJeuROrdi.preparationResultat(resultatComparaisonOrdi.get(resultatComparaisonOrdi.size()-1).toString()),"O");
+                    resultatComparaison=tourdeJeuROrdi.comparaisonCombinaison(essaisPlusTentativeOrdi.get(essaisPlusTentativeOrdi.size()-1).toString(),secretJoueur);
+                    tourdeJeuROrdi.afficherResultat(tourdeJeuROrdi.preparationResultat(resultatComparaison),"O");
                     essaisOrdi=essaisPlusTentativeOrdi;
+                    resultatComparaisonOrdi.add(resultatComparaison);
                 }
                 if (tourdeJeuRJoueur.comparaisonCombinaison(essaisPlusTentativeJoueur.get(essaisPlusTentativeJoueur.size()-1).toString(), secretOrdi).equals(combiGagnante)) {
                     gagneJoueur = true;
                 } else {
-                    resultatComparaisonJoueur.add(tourdeJeuRJoueur.comparaisonCombinaison(essaisPlusTentativeJoueur.get(essaisPlusTentativeJoueur.size()-1).toString(),secretOrdi));
-                    tourdeJeuRJoueur.afficherResultat(tourdeJeuRJoueur.preparationResultat(resultatComparaisonJoueur.get(resultatComparaisonJoueur.size()-1).toString()),"J");
+                    resultatComparaison=tourdeJeuRJoueur.comparaisonCombinaison(essaisPlusTentativeJoueur.get(essaisPlusTentativeJoueur.size()-1).toString(),secretOrdi);
+                    tourdeJeuRJoueur.afficherResultat(tourdeJeuRJoueur.preparationResultat(resultatComparaison),"J");
                     essaisJoueur=essaisPlusTentativeJoueur;
+                    resultatComparaisonJoueur.add(resultatComparaison);
                 }
 
             } else {
@@ -99,16 +102,18 @@ public class JeuDuel extends Jeu {
                 if (tourdeJeuMOrdi.comparaisonCombinaison(essaisPlusTentativeOrdi.get(essaisPlusTentativeOrdi.size()-1).toString(), secretJoueur).equals(combiGagnante)) {
                     gagneOrdi = true;
                 } else {
-                    resultatComparaisonOrdi.add(tourdeJeuMOrdi.comparaisonCombinaison(essaisPlusTentativeOrdi.get(essaisPlusTentativeOrdi.size()-1).toString(),secretJoueur));
-                    tourdeJeuMOrdi.afficherResultat(tourdeJeuMOrdi.preparationResultat(resultatComparaisonOrdi.get(resultatComparaisonOrdi.size()-1).toString()),"O");
+                    resultatComparaison=tourdeJeuMOrdi.comparaisonCombinaison(essaisPlusTentativeOrdi.get(essaisPlusTentativeOrdi.size()-1).toString(),secretJoueur);
+                    tourdeJeuMOrdi.afficherResultat(tourdeJeuMOrdi.preparationResultat(resultatComparaison),"O");
                     essaisOrdi=essaisPlusTentativeOrdi;
+                    resultatComparaisonOrdi.add(resultatComparaison);
                 }
                 if (tourdeJeuMJoueur.comparaisonCombinaison(essaisPlusTentativeJoueur.get(essaisPlusTentativeJoueur.size()-1).toString(), secretOrdi).equals(combiGagnante)) {
                     gagneJoueur = true;
                 } else {
-                    resultatComparaisonJoueur.add(tourdeJeuMJoueur.comparaisonCombinaison(essaisPlusTentativeJoueur.get(essaisPlusTentativeJoueur.size()-1).toString(),secretOrdi));
-                    tourdeJeuMJoueur.afficherResultat(tourdeJeuMJoueur.preparationResultat(resultatComparaisonJoueur.get(resultatComparaisonJoueur.size()-1).toString()),"J");
+                    resultatComparaison=tourdeJeuMJoueur.comparaisonCombinaison(essaisPlusTentativeJoueur.get(essaisPlusTentativeJoueur.size()-1).toString(),secretOrdi);
+                    tourdeJeuMJoueur.afficherResultat(tourdeJeuMJoueur.preparationResultat(resultatComparaison),"J");
                     essaisJoueur=essaisPlusTentativeJoueur;
+                    resultatComparaisonJoueur.add(resultatComparaison);
                 }
 
             }

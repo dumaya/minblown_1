@@ -46,7 +46,7 @@ public class TourdeRecherchePlusMoins extends TourdeJeu {
      */
     @Override
     protected void saisirCombinaisonOrdi(ArrayList essais, ArrayList resultatPrecedents){
-        LOG.info("Début de l'algo de determination d'une tentative par l'ordi pour le recherche+-");
+        LOG.debug("Début de l'algo de determination d'une tentative par l'ordi pour le recherche+-");
         if (essais.size()==0){
             essais.add(Console.definirCombiGagnante(longueurduSecret,"5"));
         } else {

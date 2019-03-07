@@ -92,7 +92,7 @@ public abstract class  Jeu  implements IJeu {
         int nbtour=0;
         ArrayList essais = new ArrayList();
         ArrayList resultatsPrecedents = new ArrayList();
-
+        LOG.debug("Secret: {} ",secretJoueur);
         String resultatComparaison="";
         do {
             Console.afficheMessage("** TOUR "+(nbtour+1)+" **");
