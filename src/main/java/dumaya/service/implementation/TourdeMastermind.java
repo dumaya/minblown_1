@@ -72,7 +72,7 @@ public class TourdeMastermind extends TourdeJeu {
      */
     @Override
     protected void saisirCombinaisonOrdi(ArrayList essais, ArrayList resultatsPrecedents){
-        LOG.info("Début de l'algo de determination d'une tentative par l'ordi pour le mastermind");
+        LOG.debug("Début de l'algo de determination d'une tentative par l'ordi pour le mastermind");
         if (essais.size()==0) {
             // 1er essai à 0000
             essais.add(Console.definirCombiGagnante(longueurduSecret,"0"));
@@ -99,7 +99,7 @@ public class TourdeMastermind extends TourdeJeu {
 
                     for (int j = 0; j < longueurduSecret; j++) {
                         if (tabResultat[j] == 'R')
-                            tentative[j] = tabEssai[i];
+                            tentative[j] = tabEssai[0];
                     }
                 }
             }
