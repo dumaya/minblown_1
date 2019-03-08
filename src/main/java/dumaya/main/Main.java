@@ -7,8 +7,8 @@ import dumaya.service.implementation.Partie;
 import static dumaya.outils.Utils.LOG;
 
 /**
- * Bienvenue !
- *
+ * Lancement du Mindblown, boum
+ * @author Alexis Dumay
  */
 public class Main
 {

@@ -9,6 +9,10 @@ import java.io.InputStream;
 import java.util.Properties;
 import java.util.Random;
 
+/**
+ * Classe utilitaire, définition du logger, chargement du fichier de config...
+ * @author Alexis Dumay
+ */
 public class Utils {
 
     public static final Logger LOG = LogManager.getLogger("Console");

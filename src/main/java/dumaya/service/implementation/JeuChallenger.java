@@ -2,6 +2,10 @@ package dumaya.service.implementation;
 
 import static dumaya.outils.Utils.LOG;
 
+/**
+ * Jeu challenger : le joueur essaye de trouver la combinaison de l'ordi
+ * @author Alexis Dumay
+ */
 public class JeuChallenger extends Jeu {
     public JeuChallenger(boolean modeDev, String choixJeu, int nbdeCouleur, int nbessaiPossible, int longueurduSecret) {
         super(modeDev, choixJeu, nbdeCouleur, nbessaiPossible, longueurduSecret);

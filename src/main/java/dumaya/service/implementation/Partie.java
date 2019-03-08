@@ -7,49 +7,54 @@ import static dumaya.console.Console.afficheMessage;
 
 /**
  * Une session de jeu, avec enchainements de plusieurs jeux.
+ * @author Alexis Dumay
  */
 public class Partie {
+
     private String choixModeJeu;
-
-    public void setChoixJeu(String choixJeu) {
-        this.choixJeu = choixJeu;
-    }
-
     private boolean modeDev;
     private int nbdeCouleur;
     private int nbessaiPossible;
     private int longueurduSecret;
-    //TODO nettoyer + javadoc
+    private String choixJeu;
+
+    public void setChoixJeu(String choixJeu) {
+        this.choixJeu = choixJeu;
+    }
     public String getChoixJeu() {
         return choixJeu;
     }
-
-    public String getChoixModeJeu() {
-        return choixModeJeu;
-    }
-
     public boolean isModeDev() {
         return modeDev;
     }
-
     public int getNbdeCouleur() {
         return nbdeCouleur;
     }
-
     public int getNbessaiPossible() {
         return nbessaiPossible;
     }
-
     public int getLongueurduSecret() {
         return longueurduSecret;
     }
-
-    private String choixJeu;
-
     public void setChoixModeJeu(String choixModeJeu) {
         this.choixModeJeu = choixModeJeu;
     }
+    public void setNbdeCouleur ( int nbdeCouleur){
+        this.nbdeCouleur = nbdeCouleur;
+    }
+    public void setLongueurduSecret ( int longueurduSecret){
+        this.longueurduSecret = longueurduSecret;
+    }
+    public void setNbessaiPossible(int nbessaiPossible){
+        this.nbessaiPossible = nbessaiPossible;
+    }
+    public void setModeDev ( boolean modeDev){
+        this.modeDev = modeDev;
+    }
 
+    /**
+     * Question du choix du jeu
+     */
     public void choixduJeu() {
         afficheMessage("*- Choisissez le jeu auquel vous voulez jouer : \n- R pour Recherche +/-\n- M pour Mastermind");
         choixJeu = Console.saisieListeDeChoix("R|M");
@@ -58,7 +63,7 @@ public class Partie {
     }
 
     /**
-     * Choix du jeu en fonction du mode de jeu choisi
+     * Lancement du jeu et mode de jeu choisi
      */
     public void lancerJeu () {
         switch (choixModeJeu) {
@@ -80,19 +85,4 @@ public class Partie {
         }
     }
 
-    public void setNbdeCouleur ( int nbdeCouleur){
-        this.nbdeCouleur = nbdeCouleur;
-    }
-
-    public void setLongueurduSecret ( int longueurduSecret){
-        this.longueurduSecret = longueurduSecret;
-    }
-
-    public void setNbessaiPossible(int nbessaiPossible){
-        this.nbessaiPossible = nbessaiPossible;
-    }
-
-    public void setModeDev ( boolean modeDev){
-        this.modeDev = modeDev;
-    }
 }

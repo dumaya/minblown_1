@@ -2,6 +2,10 @@ package dumaya.service.implementation;
 
 import static dumaya.outils.Utils.LOG;
 
+/**
+ * Jeu defenseur : l'ordi essaye de trouver la combinaison du joueur
+ * @author Alexis Dumay
+ */
 public class JeuDefenseur extends Jeu {
     public JeuDefenseur(boolean modeDev, String choixJeu, int nbdeCouleur, int nbessaiPossible, int longueurduSecret) {
         super(modeDev, choixJeu, nbdeCouleur, nbessaiPossible, longueurduSecret);

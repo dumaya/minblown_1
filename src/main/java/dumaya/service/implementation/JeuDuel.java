@@ -1,11 +1,13 @@
 package dumaya.service.implementation;
 
 import dumaya.console.Console;
-
 import java.util.ArrayList;
-
 import static dumaya.outils.Utils.LOG;
 
+/**
+ * Jeu duel : ordi et joueur jouent en simultané
+ * @author Alexis Dumay
+ */
 public class JeuDuel extends Jeu {
     public JeuDuel(boolean modeDev, String choixJeu, int nbdeCouleur, int nbessaiPossible, int longueurduSecret) {
         super(modeDev, choixJeu, nbdeCouleur, nbessaiPossible, longueurduSecret);

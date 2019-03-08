@@ -1,10 +1,12 @@
 package dumaya.console;
 
 import dumaya.outils.Utils;
-
 import java.util.Scanner;
 
-
+/**
+ * Tous les accés consoles et les contrôles associés.
+ * @author Alexis Dumay
+ */
 public class Console {
 
     public Console() {

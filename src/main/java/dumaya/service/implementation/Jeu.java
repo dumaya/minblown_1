@@ -3,20 +3,21 @@ package dumaya.service.implementation;
 import dumaya.console.Console;
 import dumaya.outils.Utils;
 import dumaya.service.interf.IJeu;
-
 import java.util.ArrayList;
-
 import static dumaya.outils.Utils.LOG;
 
 /**
  * Un jeu consiste en la définition du ou des secrets et en l'exécution des tours de jeu jusqu'à ce qu'il y ai un gagnant ou que le nb de tours soit dépassé.
+ * @author Alexis Dumay
  */
 public abstract class  Jeu  implements IJeu {
+
     private boolean modeDev;
     protected String choixJeu;
     protected int nbdeCouleur;
     protected int nbessaiPossible;
     protected int longueurduSecret;
+
     public Jeu(boolean modeDev, String choixJeu, int nbdeCouleur, int nbessaiPossible, int longueurduSecret) {
         this.modeDev=modeDev;
         this.choixJeu=choixJeu;
@@ -24,6 +25,7 @@ public abstract class  Jeu  implements IJeu {
         this.nbessaiPossible=nbessaiPossible;
         this.longueurduSecret=longueurduSecret;
     }
+
     @Override
     public abstract boolean unJeu();
 
@@ -47,6 +49,11 @@ public abstract class  Jeu  implements IJeu {
     }
 
 
+    /**
+     * Afficher de qui est le secret
+     * @param secret secret
+     * @param typeJoueur ordi/joueur
+     */
     protected void afficherSecret(String secret, String typeJoueur) {
         if (modeDev) {
             if (typeJoueur=="O"){
@@ -57,6 +64,12 @@ public abstract class  Jeu  implements IJeu {
         }
     }
 
+    /**
+     * Affichage gagné/perdu
+     * @param typeJoueur
+     * @param resultJeu
+     * @param secret
+     */
     @Override
     public void findeJeu(String typeJoueur, boolean resultJeu, String secret) {
         if (resultJeu) {

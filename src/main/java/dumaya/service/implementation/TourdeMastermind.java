@@ -1,22 +1,26 @@
 package dumaya.service.implementation;
 
 import dumaya.console.Console;
-
 import java.util.ArrayList;
-
 import static dumaya.outils.Utils.LOG;
 
+/**
+ * Prise en comtpe des spécifités du mastermind dans un tour de jeu.
+ * @author Alexis Dumay
+ */
 public class TourdeMastermind extends TourdeJeu {
 
     public TourdeMastermind(int longueurduSecret, int nbdeCouleur) {
         super(longueurduSecret,nbdeCouleur);
     }
 
-
     /**
      * Comparaison des combinaisons, à chaque caractére de la tentative, on compare avec le secret. Si c'est =, on alimente le tableau de retour avec R (rouge)
      * Ensuite on vérifie pour chaque caractére de la tentative si cela correspond à 1 des autres caractéres du secret, dans ce cas on alimente le tableau avec B (blanc) pour mal placé
      * si le secret est "0123" et la tentative "3100" le résultat est "BRB "
+     * @param secret à trouver
+     * @param tentative tentative en cours
+     * @return une chaine de caractere avec pour chaque position R B ou " "
      */
     @Override
     public String comparaisonCombinaison(String tentative, String secret) {
@@ -42,6 +46,7 @@ public class TourdeMastermind extends TourdeJeu {
     }
 
     /**
+     * Compter le nb de blancs et de rouges
      * @param resultat , si le secret est "0123" et la tentative "3100" le résultat est "BRB "
      * @return texte : description du résultat du mastermind à afficher
      */
@@ -66,8 +71,10 @@ public class TourdeMastermind extends TourdeJeu {
     }
 
     /**
-     * ALgo de détermination de la prochaine tentative
-     * @param essais liste des essais précédents
+     * ALgo de détermination de la prochaine tentative par l'ordi.
+     * Il essaye chaque nombre 1 par 1 "0000" puis "1111" ... et, avec la règle choisie( resultat sous forme de chaine de caractere R B " " ), une fois que le nb de R est égal au nb de digit,
+     * il est capable de déterminer la bonne combinaison.
+     * @param essais liste des essais précédents, l'objectif de cette méthode est de trouver le prochain essai, appelé tentative, en fonction des essais précédents et des resultats précédents
      * @param resultatsPrecedents liste des resultats précédents
      */
     @Override
@@ -90,7 +97,6 @@ public class TourdeMastermind extends TourdeJeu {
                 }
             } else {
                 // ensuite, on peut trouver le bon code
-                //todo corriger car là l'ordi "triche"
                 for (int i = 0; i < essais.size(); i++) {
                     String unEssai = essais.get(i).toString();
                     char[] tabEssai= unEssai.toCharArray();
@@ -109,6 +115,7 @@ public class TourdeMastermind extends TourdeJeu {
     }
 
     /**
+     * Compter le nb de rouge dans les resultats précédents
      * @param resultatsPrecedents
      * @return nbR le nombre de rouges dans tous les résultats précédents
      */
